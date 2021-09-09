@@ -6,7 +6,7 @@ Convert DataCamp Exercises to CKCode exercises
 This package is not published anywhere but GitHub. To install, you need `git`, `node`, and `npm` installed.
 
 ```bash
-git clone UCLATALL/dc-to-ckc
+git clone https://github.com/UCLATALL/dc-to-ckc
 cd dc-to-ckc
 npm i -g .
 ```
