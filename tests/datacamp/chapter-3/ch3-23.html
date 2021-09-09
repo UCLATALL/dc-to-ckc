@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 23</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+
+            HappyPlanetIndex$Region <- recode(
+                HappyPlanetIndex$Region,
+                '1'="Latin America",
+                '2'="Western Nations",
+                '3'="Middle East and North Africa",
+                '4'="Sub-Saharan Africa",
+                '5'="South Asia",
+                '6'="East Asia",
+                '7'="Former Communist Countries"
+            )
+        </code>
+        <code data-type="sample-code">
+            # this calculates the Q3 + 1.5*IQR
+            UpperBoundary <- 31.225 + 1.5*(31.225-4.455)
+
+            # modify this code to filter in only countries with population sizes less than the UpperBoundary
+            SmallerCountries <-
+
+            # this makes a histogram of the smaller countries' populations
+            gf_histogram(~ Population, data = SmallerCountries, fill = "slateblue4") %>%
+            gf_labs(x = "Population (in millions)", title = "Population of Countries (Excludes Outliers)")
+        </code>
+        <code data-type="solution">
+            UpperBoundary <- 31.225 + 1.5*(31.225-4.455)
+            SmallerCountries <- filter(HappyPlanetIndex, Population < UpperBoundary)
+            gf_histogram(~ Population, data = SmallerCountries, fill = "slateblue4") %>%
+            gf_labs(x = "Population (in millions)", title = "Population of Countries (Excludes Outliers)")
+        </code>
+
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "filter") %>% {
+                    check_arg(., ".data") %>% check_equal(incorrect_msg="Don't forget to filter in HappyPlanetIndex")
+                    check_arg(., "...") %>% check_equal(incorrect_msg="Did you use `Population < UpperBoundary` as the second argument?")
+                    check_result(.) %>% check_equal()
+                }
+                check_object(., "SmallerCountries") %>% check_equal
+                check_function(., "gf_histogram") %>% {
+                    check_arg(., "object") %>% check_equal()
+                    check_arg(., "data") %>% check_equal()
+                }
+            }
+        </code>
+        <div data-type="hint">You can use `Population < UpperBoundary` to select populations less than 31.255 + 1.5*(31.255-4.455)</div>
+    </div>
+</body>
+</html>

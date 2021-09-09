@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 16</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+            Fingers <- supernova::Fingers %>%
+                mutate(Height2Group = factor(ntile(Height, 2), 1:2, c("short", "tall")))
+        </code>
+        <code data-type="sample-code">
+            # create a scatterplot of Thumb by Height
+        </code>
+        <code data-type="solution">
+            # create a scatterplot of Thumb by Height
+            gf_point(Thumb ~ Height, data = Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("gf_point") %>% check_result() %>% check_equal(incorrect_msg = "Have you used `gf_point()`?")
+        </code>
+        <div data-type="hint">Scatterplots are collections of <code>point</code>s on a graph.</div>
+    </div>
+</body>
+</html>

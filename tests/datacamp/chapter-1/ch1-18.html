@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 18</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code"></code>
+        <code data-type="sample-code">
+            many.hellos <- c("hi", "hello", "hola", "bonjour", "ni hao", "merhaba")
+
+            # Write code to print out the 5th way of saying hello in this vector
+
+        </code>
+        <code data-type="solution">
+            many.hellos <- c("hi", "hello", "hola", "bonjour", "ni hao", "merhaba")
+            many.hellos[5]
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "many.hellos") %>% check_equal(incorrect_msg = "Make sure not to change the contents of many.hellos")
+                check_output_expr(., "many.hellos[5]", missing_msg = "You can use [] to select the 5th element in many.hellos")
+            }
+        </code>
+        <div data-type="hint">Remember to use [] to index an element in a vector</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 3</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Sex.model <- lm(Thumb ~ Sex, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # make a function from Sex.model save it as Sex.fun
+            Sex.fun <-
+
+            # this will return Sex.fun's prediction of Thumb length for a female
+            Sex.fun("female")
+        </code>
+        <code data-type="solution">
+            Sex.fun <- makeFun(Sex.model)
+            Sex.fun("female")
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Sex.fun") %>% check_equal()
+                check_function(., "Sex.fun") %>% check_result() %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Use <code>makeFun()</code> to make a prediction function from a model.</div>
+    </div>
+</body>
+</html>

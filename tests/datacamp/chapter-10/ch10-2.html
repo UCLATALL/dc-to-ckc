@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 10 Exercise 2</title>
+    <!--Script to run DataCamp Light-->
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula")
+      lapply(packages, library, character.only = T)
+      Thumb.stats <- favstats(~ Thumb, data = Fingers)
+      set.seed(34)
+      simSDoM <- do (1000) * mean(rnorm(157, Thumb.stats$mean, Thumb.stats$sd))
+      simSDoM <- arrange(simSDoM, desc(mean))
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      # Write code to print 25th mean of simSDoM
+
+      # Write code to print 976th mean
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      # Write code to print 25th mean
+      simSDoM$mean[25]
+      # Write code to print 976th mean
+      simSDoM$mean[976]
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% {
+          check_output_expr(., "simSDoM$mean[25]")
+          check_output_expr(., "simSDoM$mean[976]")
+      }
+      success_msg("Keep up the good work!")
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">
+      Use the `$` to select the variable and `[]` to index the row
+    </div>
+  </div>
+</body>
+</html>

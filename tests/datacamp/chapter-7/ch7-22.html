@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 22</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(lsr)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- Fingers %>% mutate(
+                Height2Group = factor(ntile(Height, 2), 1:2, c("short", "tall")),
+                Height3Group = factor(ntile(Height, 3), 1:3, c("short", "medium", "tall"))
+            )
+            Height2Group.model <- lm(Thumb ~ Height2Group, data = Fingers)
+            Height3Group.model <- lm(Thumb ~ Height3Group, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # use supernova() to print the ANOVA table for Height3Group.model
+        </code>
+        <code data-type="solution">
+            # use supernova() to print the ANOVA table for Height3Group.model
+            supernova(Height3Group.model)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_output_expr("supernova(Height3Group.model)")
+        </code>
+    </div>
+</body>
+</html>

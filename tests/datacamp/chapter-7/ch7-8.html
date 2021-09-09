@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 8</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=500 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Sex.model <- lm(Fingers$Thumb ~ Fingers$Sex)
+            Fingers$Sex.resid <- resid(Sex.model)
+        </code>
+        <code data-type="sample-code">
+            # This creates histograms of Thumb for each Sex
+            # Modify it to create histograms of Sex.resid for each Sex
+            gf_dhistogram(~Thumb, data = Fingers) %>%
+                gf_facet_grid(Sex ~ .)
+        </code>
+        <code data-type="solution">
+            gf_dhistogram(~Sex.resid, data = Fingers) %>%
+                gf_facet_grid(Sex ~ .)
+        </code>
+        <code data-type="sct">
+        <!--Allow multiple solutions for gf_dhistogram-->
+            ex() %>% check_or(
+                check_function(., "gf_dhistogram") %>% {
+                check_arg(., "object") %>% check_equal()
+                check_arg(., "data") %>% check_equal()
+            }, 
+                override_solution(., "gf_dhistogram(Fingers, ~Sex.resid)") %>% 
+                check_function("gf_dhistogram") %>% {
+                check_arg(., "object") %>% check_equal()
+                check_arg(., "gformula") %>% check_equal()
+            }
+            )
+         <!--Check gf_facet_grid--> 
+            ex() %>% check_function("gf_facet_grid") %>% {
+                check_arg(., "...") %>% check_equal(incorrect_msg = "Make sure you keep the code to create a grid faceted by `Sex`")
+            }
+            
+        </code>
+    </div>
+</body>
+</html>

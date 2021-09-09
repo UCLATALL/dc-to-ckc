@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 21</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers
+        </code>
+        <code data-type="sample-code">
+            # Write code to create this summary variable
+            Fingers$IndexRingRatio <-
+            
+            # Will this print anything?
+        </code>
+        <code data-type="solution">
+            Fingers$IndexRingRatio <- Fingers$Index / Fingers$Ring
+        </code>
+        <code data-type="sct">
+            ex() %>% check_object("Fingers") %>% check_column("IndexRingRatio") %>% check_equal()
+        </code>
+        <div data-type="hint">Divide Fingers$Index by Fingers$Ring using the / operator</div>
+    </div>
+</body>
+</html>

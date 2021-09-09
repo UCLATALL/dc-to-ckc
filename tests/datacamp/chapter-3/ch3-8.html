@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 8</title>
+<script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Make a density histogram of Thumb in the Fingers data frame
+            # Don't use any custom coloring
+        </code>
+        <code data-type="solution">
+            gf_dhistogram(~Thumb, data = Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("gf_dhistogram") %>% check_result() %>% check_equal()
+        </code>
+    </div>
+</body>
+</html>

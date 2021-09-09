@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 3</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            MindsetMatters <- Lock5Data::MindsetMatters %>%
+                mutate(Condition = factor(Cond, levels = c(1, 0), labels = c("Informed", "Uninformed")))
+        </code>
+        <code data-type="sample-code">
+            # Try typing MindsetMatters to see what is in the data frame.
+        </code>
+        <code data-type="solution">
+            MindsetMatters
+        </code>
+        <code data-type="sct">
+            ex() %>% check_output_expr("MindsetMatters")
+        </code>
+        <div data-type="hint">Just type MindsetMatters then click Run</div>
+    </div>
+</body>
+</html>

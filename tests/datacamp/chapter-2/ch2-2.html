@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 2</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+        </code>
+        <code data-type="sample-code">
+            # Here is code to create the vector that we named myvector1
+            myvector1 <- c(2,2,2,2,2,2,2,2,2)
+
+            # Now, let's run the tally() function on myvector1
+
+        </code>
+        <code data-type="solution">
+            # Here is code to create the vector that we named myvector1
+            myvector1 <- c(2,2,2,2,2,2,2,2,2)
+
+            # Now, let's run the tally() function on myvector1
+            tally(myvector1)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("tally") %>% check_result() %>% check_equal()
+        </code>
+        <div data-type="hint">Try tally(myvector1)</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 2</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+
+            Condition.model <- lm(Tip ~ Condition, data = TipExperiment)
+        </code>
+        <code data-type="sample-code">
+            # take a look at the sum of squares from the Condition.model
+        </code>
+        <code data-type="solution">
+            # take a look at the sum of squares from the Condition.model
+            supernova(Condition.model)
+        </code>
+        <code data-type="sct">
+            # TODO: This doesn't really check that all of the SS were output -- a student will be marked incorrect if they use supernova(Condition.model)$tbl$SS even though it prints out the correct data
+            # (Unlikely example)
+
+            ex() %>% check_output_expr("supernova(Condition.model)")
+        </code>
+    </div>
+</body>
+</html>

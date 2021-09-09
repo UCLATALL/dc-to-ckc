@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 10 Exercise 6</title>
+    <!--Script to run DataCamp Light-->
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula", "okcupiddata")
+      lapply(packages, library, character.only = T)
+      custom_seed(31)
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      # Modify to bootstrap 1000 means.
+      bootSDoM <- do(5) * mean(resample(Fingers$Thumb, 157))
+
+      # Make a histogram of these bootstrapped means.
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      # Modify to bootstrap 1000 means.
+      bootSDoM <- do(1000) * mean(resample(Fingers$Thumb, 157))
+      # Make a histogram of these bootstrapped means
+      gf_histogram(~ mean, data = bootSDoM, fill = "darkblue") %>%
+        gf_labs(title = "Bootstrapped Sampling Distribution of Means (n = 157)")
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% check_object("bootSDoM") %>% check_equal()
+      <!--Allow multiple solutions for gf_histogram-->
+      ex() %>% check_or(
+      check_function(., "gf_histogram") %>% {
+      check_arg(., "object") %>% check_equal()
+      },
+      override_solution(., "gf_histogram(bootSDoM, ~mean)") %>%
+      check_function(., "gf_histogram") %>% {
+        check_arg(., "object") %>% check_equal()
+        check_arg(., "gformula") %>% check_equal()
+      },
+      override_solution(., "gf_histogram(~bootSDoM$mean)") %>%
+      check_function("gf_histogram") %>%
+      check_arg("object") %>%
+      check_equal()
+      )
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">Don't forget to update the `do()` function!</div>
+  </div>
+</body>
+</html>

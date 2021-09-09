@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 2</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code"></code>
+        <code data-type="sample-code">
+            sum(1,5,10)
+        </code>
+        <code data-type="solution">
+            sum(1,5,10)
+        </code>
+        <code data-type="sct">
+            ex() %>%
+                check_function("sum") %>%
+                check_arg("...", arg_not_specified_msg = "Make sure you don't delete what's inside the parentheses.") %>%
+                check_equal(incorrect_msg = "Make sure you don't change what's inside the parentheses.")
+        </code>
+        <div data-type="hint">Press the blue "run" button. No need to type anything.</div>
+    </div>
+</body>
+</html>

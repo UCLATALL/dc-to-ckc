@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 1</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Here's how to combine nine 2s into a vector
+            # You could also use rep(2, times = 9)
+            myvector1 <- c(2, 2, 2, 2, 2, 2, 2, 2, 2)
+
+            # Create a vector called myvector2 with the numbers
+            # 2, 1, 3, 3, 2, 3, 1, 2, 1
+            myvector2 <- c()
+        </code>
+        <code data-type="solution">
+            myvector2 <- c(2, 1, 3, 3, 2, 3, 1, 2, 1)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_object("myvector2") %>% check_equal()
+        </code>
+        <div data-type="hint">Use the c() function to combine items into a single vector.</div>
+    </div>
+</body>
+</html>

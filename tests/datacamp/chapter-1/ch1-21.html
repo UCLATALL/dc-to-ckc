@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 21</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code"></code>
+        <code data-type="sample-code">
+            # Read this code and predict what value will come out of the R console. Then run the code and see if you were right.
+
+            A <- 1
+            B <- 5
+
+            Compare <- A > B
+
+            Compare
+        </code>
+        <code data-type="solution">
+            A <- 1
+            B <- 5
+
+            Compare <- A > B
+
+            Compare
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "A") %>% check_equal(incorrect_msg = "Make sure not to change the contents of A")
+                check_object(., "B") %>% check_equal(incorrect_msg = "Make sure not to change the contents of B")
+                check_object(., "Compare") %>% check_equal(incorrect_msg = "Make sure not to change the contents of Compare")
+                check_output_expr(., "Compare", missing_msg = "Make sure to print Compare")
+            }
+        </code>
+        <div data-type="hint">Just click Submit</div>
+    </div>
+</body>
+</html>

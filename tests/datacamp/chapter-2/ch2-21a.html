@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 21a</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers %>%
+                mutate(IndexRingRatio = Index/Ring)
+        </code>
+        <code data-type="sample-code">
+            # Use head() and select() together to look at the first six rows of Ring, Index, and IndexRingRatio
+        </code>
+        <code data-type="solution">
+            head(select(Fingers, Ring, Index, IndexRingRatio))
+
+            # These also work:
+            # select(Fingers, Ring, Index, IndexRingRatio) %>% head()
+            # Fingers %>% select(Ring, Index, IndexRingRatio) %>% head()
+        </code>
+        <code data-type="sct">
+            check_df <- function(state) {
+                check_function(state, "head") %>%
+                    check_result() %>%
+                    check_equal()
+            }
+            ex() %>% check_or(
+                check_df(.),
+                override_solution(., "head(select(Fingers, Ring, IndexRingRatio, Index))") %>%
+                    check_df(.),
+                override_solution(., "head(select(Fingers, Index, Ring, IndexRingRatio))") %>%
+                    check_df(.),
+                override_solution(., "head(select(Fingers, Index, IndexRingRatio, Ring))") %>%
+                    check_df(.),
+                override_solution(., "head(select(Fingers, IndexRingRatio, Ring, Index))") %>%
+                    check_df(.),
+                override_solution(., "head(select(Fingers, IndexRingRatio, Index, Ring))") %>%
+                    check_df(.)
+            )
+        </code>
+    </div>
+</body>
+</html>
+

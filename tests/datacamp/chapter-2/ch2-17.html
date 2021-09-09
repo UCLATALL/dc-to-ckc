@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 17</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height="500" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            fakepop <- data.frame(number = rep(0:9, each = 100))
+            custom_seed(4)
+        </code>
+        <code data-type="sample-code">
+            # The fakepop data frame has been loaded for you
+            # This code will take a random sample of 10 from the fakepop data frame and save it in a variable called randomsample
+            randomsample <- sample(fakepop, 10)
+
+            # this will make a histogram of your sample
+            randomsample %>%
+                gf_histogram(~number) %>%
+                gf_refine(scale_x_continuous(breaks = 0:9))
+        </code>
+        <code data-type="solution">
+            # the fakepop data frame has been loaded for you
+            # this will take a random sample of 10 from the fakepop data frame and save it in a variable called randomsample
+            randomsample <- sample(fakepop, 10)
+
+            # this will make a histogram of your sample
+            randomsample %>%
+                gf_histogram(~number) %>%
+                gf_refine(scale_x_continuous(breaks = 0:9))
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "randomsample")
+                check_function(., "gf_histogram")
+            }
+        </code>
+        <div data-type="hint">Just click Run</div>
+    </div>
+</body>
+</html>

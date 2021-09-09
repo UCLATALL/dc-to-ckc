@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 32</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+            require(MindsetMatters)
+            require(HappyPlanetIndex)
+            require(fivethirtyeight)
+
+            RBackend::custom_seed(41)
+        </code>
+        <code data-type="sample-code">
+            # We've saved the sample PRE
+            samplePRE <- PRE(avg_hatecrimes_per_100k_fbi ~ median_house_inc, data = hate_crimes)
+
+            # Create a sampling distribution of 1000 randomized PREs
+            SDoPRE <-
+
+            # depict the sampling distribution in a histogram
+
+
+            # run a tally
+        </code>
+        <code data-type="solution">
+            samplePRE <- PRE(avg_hatecrimes_per_100k_fbi ~ median_house_inc, data = hate_crimes)
+            SDoPRE <- do(1000) * PRE(avg_hatecrimes_per_100k_fbi ~ shuffle(median_house_inc), data = hate_crimes)
+
+            # NOTE: Best solution is:
+            #
+            # gf_histogram(~PRE, data = SDoPRE, fill = ~PRE > samplePRE)
+            # tally(~PRE > samplePRE, data = SDoPRE, format = "proportion")
+            #
+            # The longer solution is there for scoring purposes and can be ignored.
+
+            gf_histogram(~PRE, data = SDoPRE, fill = ~PRE > PRE(avg_hatecrimes_per_100k_fbi ~ median_house_inc, data = hate_crimes))
+            tally(~PRE > PRE(avg_hatecrimes_per_100k_fbi ~ median_house_inc, data = hate_crimes), data = SDoPRE, format = "proportion")
+        </code>
+        <code data-type="sct">
+            eq_fun <- function(x, y) (formula(x) == ~PRE > PRE(avg_hatecrimes_per_100k_fbi ~ median_house_inc, data = hate_crimes))
+            
+            ex() %>% {
+            check_function(., "do")
+            check_function(., "PRE", index = 2)
+            }
+            
+            ex() %>% check_or(
+            check_function(., "gf_histogram") %>% {
+                check_arg(., "data") %>% check_equal() 
+                check_arg(., "object") %>% check_equal() 
+                check_arg(., "fill") %>% check_equal(eval = FALSE, eq_fun = eq_fun)  
+            },
+            override_solution(., "gf_histogram(~PRE, data = SDoPRE, fill = ~PRE > samplePRE)") %>%
+            check_function("gf_histogram") %>% 
+            check_arg("fill") %>% check_equal(eval = FALSE, eq_fun = function(x,y) (formula(x) == ~PRE > samplePRE))
+            )
+            
+            ex() %>% check_or(
+            check_function(., "tally") %>% {
+                check_arg(., "data") %>% check_equal() 
+                check_arg(., "format") %>% check_equal() 
+                check_arg(., "x") %>% check_equal(eval = FALSE, eq_fun = eq_fun)
+            },
+            override_solution(., 'tally(~PRE > samplePRE, data = SDoPRE, format = "proportion")') %>% 
+            check_function("tally") %>% 
+            check_arg("x") %>% check_equal(eval = FALSE, eq_fun = function(x,y) (formula(x) == ~PRE > samplePRE))
+            )
+            
+            
+                    
+        </code>
+    </div>
+</body>
+</html>

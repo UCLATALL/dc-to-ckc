@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 9</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- Fingers %>%
+                filter(Thumb >= 33 & Thumb <= 100) %>%
+                mutate(
+                    zThumb = zscore(Thumb),
+                    zHeight = zscore(Height)
+                )
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # this makes a scatterplot of the raw scores
+            # size makes the points bigger or smaller
+            gf_point(Thumb ~ Height, data = Fingers, size = 4, color = "black")
+
+            # modify this to make a scatterplot of the zscores
+            # feel free to change the colors
+            gf_point( , data = Fingers, size = 4, color = "firebrick")
+        </code>
+        <code data-type="solution">
+           # this makes a scatterplot of the raw scores
+            # size makes the points bigger or smaller
+            gf_point(Thumb ~ Height, data = Fingers, size = 4, color = "black")
+
+            # modify this to make a scatterplot of the zscores
+            # feel free to change the colors
+            gf_point(zThumb ~ zHeight, data = Fingers, size = 4, color = "firebrick")
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_point", index = 1) %>% {
+                    check_arg(., "object") %>% check_equal()
+                    check_arg(., "data") %>% check_equal()
+                }
+                check_function(., "gf_point", index = 2) %>% {
+                    check_arg(., "object") %>% check_equal()
+                    check_arg(., "data") %>% check_equal()
+                }
+            }
+        </code>
+        <div data-type="hint">Change <code>Thumb</code> and <code>Height</code> to the Z-scored alternatives you created</div>
+    </div>
+</body>
+</html>

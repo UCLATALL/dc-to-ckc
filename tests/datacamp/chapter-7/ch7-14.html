@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 14</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # fit the model Thumb ~ Sex with the Fingers data
+            # save it to Sex.model
+            Sex.model <- lm(formula = , data = )
+
+            # print out the model
+
+
+            # print the supernova table for Sex.model
+        </code>
+        <code data-type="solution">
+            # fit the model Thumb ~ Sex with the Fingers data
+            # save it to Sex.model
+            Sex.model <- lm(formula = Thumb ~ Sex, data = Fingers)
+
+            # print out the model
+            Sex.model
+
+            # print the supernova table for Sex.model
+            supernova(Sex.model)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Sex.model") %>% check_equal()
+                check_output_expr(., "Sex.model")
+                check_output_expr(., "supernova(Sex.model)")
+            }
+        </code>
+        <div data-type="hint">Look at previous exercises to see how to fit <code>Sex.model</code> with the <code>Fingers</code> data</div>
+    </div>
+</body>
+</html>

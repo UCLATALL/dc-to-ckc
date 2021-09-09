@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 23</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # This code will cut Height from Fingers into 2 categories
+            Fingers$Height2Group <- ntile(Fingers$Height, 2)
+
+            # Try using factor() to label the groups "short" and "tall"
+
+
+            # This code recreates the faceted histogram
+            gf_histogram(~ Thumb, data = Fingers) %>%
+            gf_facet_grid(Height2Group ~ .)
+        </code>
+        <code data-type="solution">
+            Fingers$Height2Group <- ntile(Fingers$Height, 2)
+            Fingers$Height2Group <- factor(Fingers$Height2Group, levels = c(1,2), labels = c("short", "tall"))
+            gf_histogram(~ Thumb, data = Fingers) %>%
+            gf_facet_grid(Height2Group ~ .)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_correct(
+                check_object(., "Fingers") %>% check_column("Height2Group") %>% check_equal(incorrect_msg = "Did you remember to save the factored variable back into Fingers$Height2Group?"),
+            {
+                check_error(.)
+                check_function(., "factor") %>% check_arg("levels") %>% check_equal()
+                check_function(., "factor") %>% check_arg("labels") %>% check_equal()
+
+            }
+            )
+
+
+
+
+            success_msg("Wow! You're a rock staR. Keep up the good work!")
+        </code>
+        <div data-type="hint">Use <code>ntile</code> to split a variable into a certain <code>n</code>umber of parts</div>
+    </div>
+</body>
+</html>

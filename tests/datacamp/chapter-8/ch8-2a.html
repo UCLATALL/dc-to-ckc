@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 2a</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            TinyFingers <- data.frame(
+                Sex = as.factor(rep(c("female", "male"), each = 3)),
+                Thumb = c(56, 60, 61, 63, 64, 68),
+                Height = c(62, 66, 67, 63, 68, 71)
+            )  %>% mutate(
+                Height2Group = recode(ntile(Height, 2), '1' = "1-Short", '2' = "2-Tall"),
+                Height3Group = recode(ntile(Height, 2), '1' = "1-Short", '2' = "2-Medium", '3' = "3-Tall"),
+                GroupNum = ntile(Height, 2)
+            )
+            Height2Group.model <- lm(Thumb ~ Height2Group, data = TinyFingers)
+        </code>
+        <code data-type="sample-code">
+            # recode GroupNum from 1 and 2 to 0 and 1
+            # save it to a new variable Group01 so that nothing is overwritten
+            TinyFingers$Group01 <- recode()
+
+            # This will fit an "accidental" regression model
+            lm(Thumb ~ Group01, data = TinyFingers)
+        </code>
+        <code data-type="solution">
+            # recode GroupNum from 1 and 2 to 0 and 1
+            # save it to a new variable Group01 so that nothing is overwritten
+            TinyFingers$Group01 <- recode(TinyFingers$GroupNum, "1" = 0, "2" = 1)
+
+            # This will fit an "accidental" regression model
+            lm(Thumb ~ Group01, data = TinyFingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "TinyFingers") %>% check_column("Group01")  %>% check_equal()
+                check_output_expr(., "lm(Thumb ~ Group01, data = TinyFingers)")
+            }
+        </code>
+        <div data-type="hint">Make sure you use quotes on the left of the equals sign in <code>recode</code> like <code>'1' = 0</code></div>
+    </div>
+</body>
+</html>

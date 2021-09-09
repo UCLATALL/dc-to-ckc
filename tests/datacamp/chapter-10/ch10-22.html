@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 10 Exercise 22</title>
+  <!--Script to run DataCamp Light-->
+  <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula", "okcupiddata")
+      lapply(packages, library, character.only = T)
+      custom_seed(51)
+      Fingers$Height2Group <- ntile(Fingers$Height, 2)
+      Fingers$Height2Group <- factor(Fingers$Height2Group, levels = c(1,2), labels = c("short", "tall"))
+      Height2Group.model <- lm(Thumb ~ Height2Group, data = Fingers)
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      # Here we fit the Height2Group model of Thumb
+      Height2Group.model <- lm(Thumb ~ Height2Group, data = Fingers)
+
+      # Try out confint() on this model
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      # Here we fit the Height2Group model of Thumb
+      Height2Group.model <- lm(Thumb ~ Height2Group, data = Fingers)
+      # Try out confint() on this model
+      confint(Height2Group.model)
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% {
+        check_object(., "Height2Group.model") %>% check_equal()
+        check_function(., "confint") %>% check_result() %>% check_equal()
+      }
+      success_msg("Keep up the good work!")
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">Have you tried using the `confint()` function?</div>
+  </div>
+</body>
+</html>

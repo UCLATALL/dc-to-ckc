@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 29</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Write the code select(Fingers, Sex, Thumb) inside of head()
+            # as shown in the .gif above
+            head()
+        </code>
+        <code data-type="solution">
+            head(select(Fingers, Sex, Thumb))
+        </code>
+        <code data-type="sct">
+            ex() %>% check_or(
+                check_correct(
+                    check_function(., "head") %>% check_result() %>% check_equal(),
+                    check_correct(
+                        check_function(., "select") %>% check_result() %>% check_equal(),
+                        check_function(., "select") %>% {
+                            check_arg(., ".data") %>% check_equal(incorrect_msg = "Did you specify the Fingers data frame?")
+                            check_arg(., "...", arg_not_specified_msg = "Did you include the column names?") %>% check_equal(incorrect_msg = "Did you select the Sex and Thumb columns?")
+                        }
+                    )
+                ),
+                override_solution(., "head(select(Fingers, Thumb, Sex))") %>%
+                    check_correct(
+                        check_function(., "head") %>% check_result() %>% check_equal(),
+                        check_correct(
+                            check_function(., "select") %>% check_result() %>% check_equal(),
+                            check_function(., "select") %>% {
+                                check_arg(., ".data") %>% check_equal(incorrect_msg = "Did you specify the Fingers data frame?")
+                                check_arg(., "...", arg_not_specified_msg = "Did you include the column names?") %>% check_equal(incorrect_msg = "Did you select the Thumb and Sex columns?")
+                            }
+                        )
+                    )
+            )
+        </code>
+        <div data-type="hint">Remember to include the data and the column names when you use the `select()` function</div>
+    </div>
+</body>
+</html>

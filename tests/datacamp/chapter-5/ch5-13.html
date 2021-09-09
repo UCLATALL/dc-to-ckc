@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 5 Exercise 13</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+
+            Empty.model <- lm(Thumb ~ NULL, data = Fingers)
+            Fingers <- supernova::Fingers %>% mutate(
+                Predicted = predict(Empty.model),
+                Residual =  resid(Empty.model)
+            )
+        </code>
+        <code data-type="sample-code">
+            # make a histogram for Thumb
+
+            # make a histogram for Predicted
+
+            # make a histogram for Residual
+        </code>
+        <code data-type="solution">
+            gf_histogram(~Thumb, data = Fingers)
+            gf_histogram(~Predicted, data = Fingers)
+            gf_histogram(~Residual, data = Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_histogram", index = 1) %>% check_result() %>% check_equal()
+                check_function(., "gf_histogram", index = 2) %>% check_result() %>% check_equal()
+                check_function(., "gf_histogram", index = 3) %>% check_result() %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Don't forget to make all three histograms!</div>
+    </div>
+</body>
+</html>

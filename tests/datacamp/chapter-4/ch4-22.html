@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 22</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Here we create the variable Height2Group
+            Fingers$Height2Group <- ntile(Fingers$Height, 2)
+
+            # Try creating histograms of Thumb in a grid by Height2Group
+
+        </code>
+        <code data-type="solution">
+            # Here we create the variable Height2Group
+            Fingers$Height2Group <- ntile(Fingers$Height, 2)
+
+            # Try creating histograms of Thumb in a grid by Height2Group
+            gf_histogram(~Thumb, data=Fingers) %>%
+                gf_facet_grid(Height2Group ~ .)
+
+        </code>
+        <code data-type="sct">
+        <!-- Allow multiple solutions for gf_histogram() -->
+            ex() %>% check_or(
+                check_function(., "gf_histogram") %>% {
+                    check_arg(., "object") %>% check_equal()
+                    check_arg(., "data") %>% check_equal()
+                },
+                override_solution(., "gf_histogram(Fingers, ~Thumb)") %>%
+                    check_function("gf_histogram") %>% {
+                        check_arg(., "object") %>% check_equal()
+                        check_arg(., "gformula") %>% check_equal()
+                    }
+            )
+
+         <!-- Check gf_facet_grid() -->
+            ex() %>%
+                check_function(., "gf_facet_grid", not_called_msg = "Have you called gf_facet_grid() to put your histograms in a grid?") %>%
+                check_arg(., "object") %>%
+                check_equal()
+
+        <!-- Allow multiple solutions for gf_facet_grid() -->
+            ex() %>% check_or(
+                check_function(., "gf_facet_grid") %>%
+                    check_arg(2) %>%
+                    check_equal(),
+                override_solution(., "gf_facet_grid(gf_histogram(Fingers, ~Thumb), . ~ Height2Group)") %>%
+                    check_function('gf_facet_grid') %>%
+                    check_arg(2) %>%
+                    check_equal()
+            )
+
+
+
+        </code>
+        <div data-type="hint">Don't forget to use gf_facet_grid to put your histograms of Height2Group in a grid</div>
+    </div>
+</body>
+</html>

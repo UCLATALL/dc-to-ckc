@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 20</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+
+            Fingers$Height3Group <- factor(
+                ntile(Fingers$Height, 3),
+                levels = 1:3,
+                labels = c("short", "medium", "tall")
+            )
+
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+
+            # use fVal to get the F ratio for Height model
+        </code>
+        <code data-type="solution">
+            # use fVal to get the F ratio for Height model
+            fVal(Height.model)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("fVal") %>% check_result() %>% check_equal()
+        </code>
+    </div>
+</body>
+</html>

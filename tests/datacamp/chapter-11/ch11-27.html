@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 27</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+            require(MindsetMatters)
+            require(HappyPlanetIndex)
+            require(fivethirtyeight)
+        </code>
+        <code data-type="sample-code">
+            # make a plot to help us explore the variation in avg_hatecrimes_per_100k_fbi
+        </code>
+        <code data-type="solution">
+            # all of these are ways to look at a single continuous variable
+            # some are more helpful than others
+
+            gf_histogram(~avg_hatecrimes_per_100k_fbi, data = hate_crimes)
+            <!-- gf_histogramh(~avg_hatecrimes_per_100k_fbi, data = hate_crimes) -->
+            gf_dhistogram(~avg_hatecrimes_per_100k_fbi, data = hate_crimes)
+            <!-- gf_dhistogramh(~avg_hatecrimes_per_100k_fbi, data = hate_crimes) -->
+            gf_freqpoly(~avg_hatecrimes_per_100k_fbi, data = hate_crimes)
+            gf_density(~avg_hatecrimes_per_100k_fbi, data = hate_crimes)
+            gf_boxplot(avg_hatecrimes_per_100k_fbi ~ 1, data = hate_crimes)
+            <!-- gf_boxploth(hate_crimes, 1 ~ avg_hatecrimes_per_100k_fbi) -->
+            gf_violin(avg_hatecrimes_per_100k_fbi ~ 1, data = hate_crimes)
+            <!-- gf_violinh(hate_crimes, 1 ~ avg_hatecrimes_per_100k_fbi) -->
+        </code>
+
+        <code data-type="sct">
+            ex() %>% check_or(
+                check_function(., "gf_histogram") %>% check_result() %>% check_equal(),
+                check_function(., "gf_dhistogram") %>% check_result() %>% check_equal(),
+                check_function(., "gf_freqpoly") %>% check_result() %>% check_equal(),
+                check_function(., "gf_density") %>% check_result() %>% check_equal(),
+                check_function(., "gf_boxplot") %>% check_result() %>% check_equal(),
+                check_function(., "gf_violin") %>% check_result() %>% check_equal()
+            )
+        </code>
+    </div>
+</body>
+</html>

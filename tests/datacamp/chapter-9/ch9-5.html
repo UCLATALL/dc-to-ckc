@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 5</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+            RBackend::custom_seed(13)
+        </code>
+        <code data-type="sample-code">
+            # run this code
+            mean(resample(1:6, 24))
+        </code>
+        <code data-type="solution">
+           # run this code
+            mean(resample(1:6, 24))
+        </code>
+        <code data-type="sct">
+            ex() %>% check_error()
+        </code>
+    </div>
+</body>
+</html>

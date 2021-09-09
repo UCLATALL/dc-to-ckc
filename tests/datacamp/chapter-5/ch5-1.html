@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 5 Exercise 1</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Modify this line to save the numbers to outcome
+            outcome <- c()
+
+            # Put outcome into the tinydata data frame
+            tinydata <- data.frame()
+
+            # This will give you the favstats for outcome
+            favstats(~outcome, data = tinydata)
+        </code>
+
+        <code data-type="solution">
+            outcome <- c(5, 5, 5, 10, 20)
+            tinydata <- data.frame(outcome)
+            favstats(~outcome, data = tinydata)
+        </code>
+
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "outcome") %>% check_equal()
+                check_object(., "tinydata") %>% check_equal()
+                check_function(., "favstats") %>% check_result() %>% check_equal()
+            }
+        </code>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 7 Exercise 7</title>
+  <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <code data-type="pre-exercise-code">
+      require(tidyverse)
+      require(mosaic)
+      require(Lock5Data)
+      require(supernova)
+
+      Sex.model <- lm(Fingers$Thumb ~ Fingers$Sex)
+    </code>
+    <code data-type="sample-code">
+      # store the residuals from Sex.model
+      Fingers$Sex.resid <-
+
+      # This prints the first 10 rows of Fingers
+      head(select(Fingers, Thumb, Sex.resid), 10)
+    </code>
+    <code data-type="solution">
+      # store the residuals from Sex.model
+      Fingers$Sex.resid <- resid(Sex.model)
+
+      # This prints the first 10 rows of Fingers
+      head(select(Fingers, Thumb, Sex.resid), 10)
+    </code>
+    <code data-type="sct">
+      ex() %>% {
+        check_object(., "Fingers") %>%  
+          check_column("Sex.resid") %>% 
+          check_equal()
+      }
+    </code>
+    <div data-type="hint">Use <code>resid()</code> to get the residuals for each case.</div>
+  </div>
+</body>
+</html>

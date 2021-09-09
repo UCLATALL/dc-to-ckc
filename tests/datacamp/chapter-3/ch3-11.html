@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 11</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+            custom_seed(4)
+        </code>
+        <code data-type="sample-code">
+            model.pop <- 1:6
+            sample1 <- resample(model.pop, 12)
+            dicerolls <- data.frame(sample1)
+
+            # Write code to create a relative frequency histogram
+            # Remember to put in bins as an argument
+            # Don't use any custom coloring
+        </code>
+        <code data-type="solution">
+            model.pop <- 1:6
+            sample1 <- resample(model.pop, 12)
+            dicerolls <- data.frame(sample1)
+            gf_dhistogram(~sample1, data = dicerolls, bins = 6)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "sample1") %>% check_equal()
+                check_object(., "dicerolls") %>% check_equal()
+                check_function(., "gf_dhistogram") %>% check_arg("bins")
+                check_or(.,
+                    check_function(., "gf_dhistogram") %>% {
+                        check_arg(., "object") %>% check_equal(eval = FALSE)
+                        check_arg(., "data") %>% check_equal()
+                    },
+                    override_solution_code(., "{
+                        model.pop <- 1:6
+                        sample1 <- resample(model.pop, 12)
+                        dicerolls <- data.frame(sample1)
+                        gf_dhistogram(~dicerolls, bins = 6)
+                    }") %>% 
+                        check_function("gf_dhistogram") %>% 
+                            check_arg("object") %>% 
+                            check_equal(eval = FALSE)
+                )
+            }
+        </code>
+        <div data-type="hint">Remember this is a *relative* frequency histogram</div>
+    </div>
+</body>
+</html>

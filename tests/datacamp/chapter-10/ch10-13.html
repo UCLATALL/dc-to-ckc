@@ -1,0 +1,36 @@
+!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 10 Exercise 13</title>
+  <!--Script to run DataCamp Light-->
+  <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula", "okcupiddata")
+      lapply(packages, library, character.only = T)
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      # Run this code
+      xqt(.975,df=999)
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      # Run this code
+      xqt(.975,df=999)
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% check_output_expr("xqt(.975, df=999)")
+      success_msg("Super!")
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">Just click Run</div>
+  </div>
+</body>
+</html>

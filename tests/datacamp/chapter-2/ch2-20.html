@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 20</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(mosaic)
+            require(tidyverse)
+            require(supernova)
+            Fingers <- supernova::Fingers
+            Fingers$RingLonger <- Fingers$Ring > Fingers$Index
+        </code>
+        <code data-type="sample-code">
+            # This code creates a variable called RingLonger
+            Fingers$RingLonger <- Fingers$Ring > Fingers$Index
+            
+            # Write code to tally up RingLonger in Fingers.
+        </code>
+        <code data-type="solution">
+            # Either of these:
+            tally(Fingers$RingLonger)
+            tally(~RingLonger, data = Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_correct(
+                check_function(., "tally") %>% check_result() %>% check_equal(),
+                {
+                    check_error(.)
+                    check_function(., "tally") %>% check_arg("x") %>% check_equal(incorrect_msg = "Make sure you are getting RingLonger from Fingers using the $.")
+                }
+            )
+        </code>
+        <div data-type="hint">Remember that RingLonger is stored as a column in Fingers, so you need to access it like Fingers$RingLonger when using tally()</div>
+    </div>
+</body>
+</html>

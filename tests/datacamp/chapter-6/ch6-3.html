@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6 Exercise 3</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # create an empty model of Thumb length from Fingers
+            Empty.model <-
+
+            # analyze the model with supernova() to get the SS
+            supernova()
+        </code>
+        <code data-type="solution">
+            Empty.model <- lm(Thumb ~ NULL, data = Fingers)
+            supernova(Empty.model)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Empty.model") %>% check_equal()
+                check_output_expr(., "supernova(Empty.model)")
+            }
+        </code>
+        <div data-type="hint">Use <code>lm()</code> to create an empty model.</div>
+    </div>
+</body>
+</html>

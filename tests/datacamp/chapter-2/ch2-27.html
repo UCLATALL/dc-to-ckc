@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 27</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            MindsetMatters <- Lock5Data::MindsetMatters 
+        </code>
+        <code data-type="sample-code">
+# Use the $ sign to print out the contents of the Age variable in the MindsetMatters data frame
+        </code>
+        <code data-type="solution">
+            MindsetMatters$Age
+           
+        </code>
+        <code data-type="sct">
+            ex() %>% check_output_expr("MindsetMatters$Age", missing_msg = "Have you used $ to select the Age variable in MindsetMatters?")
+
+        </code>
+        <div data-type="hint">Use $, Age, and MindsetMatters</div>
+    </div>
+</body>
+</html>

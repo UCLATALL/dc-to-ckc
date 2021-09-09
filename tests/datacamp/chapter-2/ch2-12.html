@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 12</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers %>%
+                mutate_if(is.factor, as.numeric) %>%
+                arrange(desc(Sex)) %>%
+                {.[1, "FamilyMembers"] <- 2; . } %>%
+                {.[1, "Height"] <- 62; . }
+        </code>
+        <code data-type="sample-code">
+            # Try using tail() to look at the last 6 rows of the Fingers data frame.
+        </code>
+        <code data-type="solution">
+            tail(Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("tail") %>% check_result() %>% check_equal()
+        </code>
+        <div data-type="hint">Use tail() with the Fingers data set</div>
+    </div>
+</body>
+</html>

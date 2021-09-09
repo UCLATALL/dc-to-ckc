@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6 Exercise 4</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+            Empty.model <- lm(Thumb ~ NULL, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # try running this code
+            # will this result in the same SS?
+            sum(resid(Empty.model)^2)
+        </code>
+        <code data-type="solution">
+            sum(resid(Empty.model)^2)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("sum") %>% check_result() %>% check_equal()
+        </code>
+        <div data-type="hint">Just press Submit without changing the code</div>
+    </div>
+</body>
+</html>

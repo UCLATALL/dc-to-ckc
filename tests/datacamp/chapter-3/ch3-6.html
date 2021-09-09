@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 6</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # adjust the number of bins to 50
+            gf_histogram(~ Thumb, data = Fingers, bins = )
+
+            # adjust the number of bins to 5
+            gf_histogram(~ Thumb, data = Fingers)
+
+            # adjust the bin width to 3
+            gf_histogram(~ Thumb, data = Fingers, binwidth = )
+
+            # adjust the bin width to 10
+            gf_histogram(~ Thumb, data = Fingers)
+        </code>
+        <code data-type="solution">
+            # adjust the number of bins to 50
+            gf_histogram(~ Thumb, data = Fingers, bins = 50)
+
+            # adjust the number of bins to 5
+            gf_histogram(~ Thumb, data = Fingers, bins = 5)
+
+            # adjust the bin width to 3
+            gf_histogram(~ Thumb, data = Fingers, binwidth = 3)
+
+            # adjust the bin width to 10
+            gf_histogram(~ Thumb, data = Fingers, binwidth = 10)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_histogram", index = 1) %>% check_arg("bins") %>% check_equal(incorrect_msg = "Did you set the number of `bins` to 50?")
+                check_function(., "gf_histogram", index = 2) %>% check_arg("bins", arg_not_specified_msg = "Did you set the number of `bins` to 5?") %>% check_equal(incorrect_msg = "Did you set the number of `bins` to 5?")
+                check_function(., "gf_histogram", index = 3) %>% check_arg("binwidth") %>% check_equal(incorrect_msg = "Did you set the `binwidth` to 3?")
+                check_function(., "gf_histogram", index = 4) %>% check_arg("binwidth", arg_not_specified_msg = "Did you set the `binwidth` to 10?") %>% check_equal(incorrect_msg = "Did you set the `binwidth` to 10?")
+            }
+        </code>
+        <div data-type="hint">Make sure to set the bins or binwidth for all four histograms</div>
+    </div>
+</body>
+</html>

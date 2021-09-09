@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 3</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+
+            RBackend::custom_seed(50)
+        </code>
+        <code data-type="sample-code">
+            # run this code
+            SDob1 <- do(1000) * b1(Tip ~ Condition, data = resample(TipExperiment, 44))
+
+            # show the first 6 lines of this data frame
+            </code>
+            <code data-type="solution">
+            # run this code
+            SDob1 <- do(1000) * b1(Tip ~ Condition, data = resample(TipExperiment, 44))
+
+            # show the first 6 lines of this data frame
+            head(SDob1)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_object("SDob1") %>% check_equal(incorrect_msg = "Make sure you don't delete the code to create SDob1")
+            ex() %>% check_function("head") %>% check_result() %>% check_equal(incorrect_msg = "did you call head() on SDob1?")
+        </code>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 2</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-height=500
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Change the default colors for the different values of the 
+            # explanatory variable
+            gf_histogram(~Thumb, data = Fingers, fill = ~Sex)
+        </code>
+        <code data-type="solution">
+            gf_histogram( ~ Thumb, data = Fingers, fill = ~Sex) %>%
+                gf_refine(scale_fill_manual(values = c("red","blue")))
+        </code>
+        <code data-type="sct">
+            msg <- "Did you make sure to use the pipe (`%>%`) to send the output of `gf_histogram` to `gf_refine`?"
+            ex() %>% {
+                check_function(., "gf_histogram")
+                check_function(., "gf_refine") %>% {
+                    check_arg(., "object", arg_not_specified_msg = msg) %>%
+                      check_equal(incorrect_msg = msg, append = FALSE, eq_fun = function(x, y) all(class(x) == class(y)))
+                    check_arg(., "...",    arg_not_specified_msg = msg)
+                }
+                check_function(., "scale_fill_manual") %>%
+                    check_arg("values")
+            }
+        </code>
+        <div data-type="hint">The explanatory variable is <code>Sex</code></div>
+    </div>
+</body>
+</html>

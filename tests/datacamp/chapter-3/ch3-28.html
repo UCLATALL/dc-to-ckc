@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 28</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Add margin and format arguments to the tally() function. Set margins to TRUE and format to proportion
+            tally(~ RaceEthnic, data = Fingers)
+        </code>
+        <code data-type="solution">
+            tally(~ RaceEthnic, data = Fingers, margins = TRUE, format = "proportion")
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("tally") %>% {
+                check_arg(., "margins") %>% check_equal()
+                check_arg(., "format") %>% check_equal()
+                check_result(.) %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Don't forget to use quotations around proportion. You code should include <code>format = "proportion"</code></div>
+    </div>
+</body>
+</html>

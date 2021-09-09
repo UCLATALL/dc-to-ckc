@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 5 Exercise 11</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+
+            TinyFingers <- data.frame(
+                StudentID = 1:6,
+                Thumb = c(56, 60, 61, 63, 64, 68)
+            )
+            TinyEmpty.model <- lm(Thumb ~ NULL, data = TinyFingers)
+            TinyFingers <- TinyFingers %>% mutate(
+                Predicted = predict(TinyEmpty.model),
+                Residual = resid(TinyEmpty.model)
+            )
+        </code>
+        <code data-type="sample-code">
+            # get the favstats for Thumb
+
+            # get the favstats for Residuals
+
+            # if you decide to save them, make sure to print them out
+        </code>
+        <code data-type="solution">
+            favstats(~Thumb, data = TinyFingers)
+            favstats(~Residual, data = TinyFingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_output_expr(., "favstats(TinyFingers$Thumb)")
+                check_output_expr(., "favstats(TinyFingers$Residual)")
+            }
+            success_msg("You're getting the hang of it!")
+        </code>
+        <div data-type="hint">Don't forget to use <code>~Thumb</code> and <code>~Residual</code> with the <code>TinyFingers</code> data set.</div>
+    </div>
+</body>
+</html>

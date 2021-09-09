@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 9</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers %>%
+                mutate_if(is.factor, as.numeric) %>%
+                arrange(desc(Sex)) %>%
+                {.[1, "FamilyMembers"] <- 2; . } %>%
+                {.[1, "Height"] <- 62; . }
+        </code>
+        <code data-type="sample-code">
+            # A way to look at a data frame is to type its name
+            # Look at the data frame called Fingers
+        </code>
+        <code data-type="solution">
+            Fingers
+        </code>
+        <code data-type="sct">
+            ex() %>% check_output_expr("Fingers")
+        </code>
+        <div data-type="hint">Type Fingers then click Run</div>
+    </div>
+</body>
+</html>

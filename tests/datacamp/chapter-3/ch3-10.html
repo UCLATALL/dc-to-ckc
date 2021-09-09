@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 10</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+            allow_solution_error()
+        </code>
+        <code data-type="sample-code">
+            model.pop <- 1:6
+
+            # This samples the same way 12 times
+            resample(model.pop, 12)
+
+            # Will this accomplish the same thing?
+            # Do not change the code --- just submit it
+            sample(model.pop, 12)
+        </code>
+        <code data-type="solution">
+        </code>
+        <code data-type="sct">
+            success_msg("This code is supposed to throw an error. You can read it in the Console tab.")
+        </code>
+        <div data-type="hint">Just click Submit!</div>
+    </div>
+</body>
+</html>

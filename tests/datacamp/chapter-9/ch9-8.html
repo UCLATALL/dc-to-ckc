@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 8</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+            RBackend::custom_seed(14)
+        </code>
+        <code data-type="sample-code">
+            bunchofmeans <- do(10) * mean(resample(1:6, 24))
+
+            # make a histogram of the means
+            # draw a vertical line at the population mean
+        </code>
+        <code data-type="solution">
+            bunchofmeans <- do(10) * mean(resample(1:6, 24))
+
+            # make a histogram of the means
+            # draw a vertical line at the population mean
+            gf_histogram(~mean, data = bunchofmeans, fill = "blue") %>%
+            gf_vline(xintercept = 3.5)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_histogram") %>% {
+                    check_arg(., "object") %>% check_equal()
+                    check_arg(., "data") %>% check_equal()
+                }
+                check_function(., "gf_vline") %>%
+                    check_arg("xintercept") %>% check_equal()
+            }
+        </code>
+    </div>
+</body>
+</html>

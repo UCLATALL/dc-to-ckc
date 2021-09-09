@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 15</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- Fingers %>%
+                filter(Thumb >= 33 & Thumb <= 100) %>%
+                mutate(
+                    zThumb = zscore(Thumb),
+                    zHeight = zscore(Height)
+                )
+        </code>
+        <code data-type="sample-code">
+          # this calculates the correlation of Middle by Pinkie
+          cor(Middle ~ Pinkie, data = Fingers)
+
+          # this calculates the correlation of Pinkie by Middle
+          cor(Pinkie ~ Middle, data = Fingers)
+
+        </code>
+        <code data-type="solution">
+          # this calculates the correlation of Middle by Pinkie
+          cor(Middle ~ Pinkie, data = Fingers)
+
+          # this calculates the correlation of Pinkie by Middle
+          cor(Pinkie ~ Middle, data = Fingers)
+
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "cor", index = 1) %>% check_result() %>% check_equal()
+                check_function(., "cor", index = 2) %>% check_result() %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Just submit the code and see the symmetry.</div>
+    </div>
+</body>
+</html>

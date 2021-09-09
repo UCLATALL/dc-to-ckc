@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 10</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- Fingers %>%
+                filter(Thumb >= 33 & Thumb <= 100) %>%
+                mutate(
+                    zThumb = zscore(Thumb),
+                    zHeight = zscore(Height)
+                )
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # this fits a regression model of Thumb by Height
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+
+            # modify this to fit a regression model predicting zThumb with zHeight
+            zHeight.model <- lm()
+
+            # this prints the estimates
+            Height.model
+            zHeight.model
+        </code>
+        <code data-type="solution">
+            zHeight.model <- lm(zThumb ~ zHeight, data = Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_object("zHeight.model") %>% check_equal()
+        </code>
+        <div data-type="hint">Just follow the instructions above</div>
+    </div>
+</body>
+</html>

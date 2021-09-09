@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6 Exercise 17</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            set.seed(2)
+            somedata <- 1:10 %>%
+                purrr::set_names(paste0("var", 1:10)) %>%
+                purrr::map_df(~resample(-3:3, 1000)) %>%
+                mutate(sum = var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9 + var10)
+        </code>
+        <code data-type="sample-code">
+            # try changing the bin number to be smaller than 30
+            gf_dhistogram(~ sum, data = somedata, bins = 30)
+
+             # try changing the bin number to be larger than 30
+            gf_dhistogram(~ sum, data = somedata, bins = 30)
+        </code>
+        <code data-type="solution">
+            # try changing the bin number to be smaller than 30
+            gf_dhistogram(~ sum, data = somedata, bins = 10)
+
+            # try changing the bin number to be larger than 30
+            gf_dhistogram(~ sum, data = somedata, bins = 75)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_error()
+        </code>
+        <div data-type="hint">Make sure to change the number of bins</div>
+    </div>
+</body>
+</html>

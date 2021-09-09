@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 4 Exercise 21</title>
+	<script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+	<div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+		<code data-type="pre-exercise-code">
+			require(tidyverse)
+			require(mosaic)
+			require(supernova)
+			
+		</code>
+		<code data-type="sample-code">
+			# Use ntile() to cut Height into groups
+			Fingers$Height2Group <-
+
+			# This prints out the first 6 observations of Height and Height2Group
+			head(select(Fingers, Height, Height2Group))
+		</code>
+		<code data-type="solution">
+			# Use ntile() to cut Height into groups
+			Fingers$Height2Group <- ntile(Fingers$Height, 2)
+							
+			# This prints out the first 6 observations of Height and Height2Group
+			head(select(Fingers, Height, Height2Group))
+		</code>
+		<code data-type="sct">
+		<!-- First, test to see if the contents of Fingers$Height2Group are correct -->
+			ex() %>% check_correct(
+				check_object(., "Fingers") %>% check_column("Height2Group") %>% check_equal(),
+		<!-- Diagnose errors if the check_correct test failed-->
+			{
+				check_error(.)
+				check_function(., "ntile", not_called_msg = "Have you called ntile()?") %>% check_arg("n") %>% check_equal()
+			})
+			
+		<!-- Allow multiple solutions for head() and select() combination -->
+			incorrect_msg <- "Did you remember to use select() to select the Height and Height2Group columns from the Fingers data frame before calling head()?"
+			 ex() %>%  check_or(
+					check_output_expr(., "head(select(Fingers, Height, Height2Group))", missing_msg = incorrect_msg),
+					check_output_expr(., "head(select(Fingers, Height2Group, Height))", missing_msg = incorrect_msg)
+				)
+
+			
+
+		</code>
+		<div data-type="hint">Use ntile() to split Fingers$Height into 2 categories</div>
+	</div>
+</body>
+</html>

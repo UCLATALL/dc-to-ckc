@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 25</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(lsr)
+            require(Lock5Data)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # run this code
+            Sex.model <- lm(Thumb ~ Sex, data = Fingers)
+            supernova(Sex.model)
+            
+            # now replace supernova with PRE and run again (then Submit)
+        </code>
+        <code data-type="solution">
+            PRE(Thumb ~ Sex, data = Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("PRE") %>% check_result() %>% check_equal()
+        </code>
+        <div data-type="hint">Change supernova to PRE and press Submit</div>
+    </div>
+</body>
+</html>

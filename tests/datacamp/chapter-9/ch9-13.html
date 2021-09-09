@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 13</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Thumb.stats <- favstats(~Thumb, data = Fingers)
+            RBackend::custom_seed(1)
+        </code>
+        <code data-type="sample-code">
+            # modify this to generate 1000 thumb lengths instead of 20
+            simThumb <- rnorm(20, mean = Thumb.stats$mean, sd = Thumb.stats$sd)
+
+            # put simThumb into a data frame called simpop
+            simpop <-
+
+            # write code to make a histogram of simThumb
+        </code>
+        <code data-type="solution">
+            # modify this to generate 1000 thumb lengths instead of 20
+            simThumb <- rnorm(1000, mean = Thumb.stats$mean, sd = Thumb.stats$sd)
+
+            # put simThumb into a data frame called simpop
+            simpop <- data.frame(simThumb)
+
+            # write code to make a histogram of simThumb
+            gf_histogram(~simThumb, data = simpop, fill = "darkorange2") %>%
+             gf_labs(title = "Simulated Population Distribution")
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "simThumb") %>% check_equal()
+                check_object(., "simpop") %>% check_equal()
+                check_function(., "gf_histogram") %>% {
+                    check_arg(., "object") %>% check_equal()
+                    check_arg(., "data") %>% check_equal()
+                }
+            }
+        </code>
+    </div>
+</body>
+</html>

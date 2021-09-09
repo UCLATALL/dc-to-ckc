@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 8</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+
+            RBackend::custom_seed(20)
+        </code>
+        <code data-type="sample-code">
+            # modify this to calculate 1,000 PREs based on shuffled data
+            SDoPRE <- PRE(Tip ~ shuffle(Condition), data = TipExperiment)
+
+            # print the first 6 lines of SDoPRE
+        </code>
+        <code data-type="solution">
+            SDoPRE <- do(1000) * PRE(Tip ~ shuffle(Condition), data = TipExperiment)
+            head(SDoPRE)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "SDoPRE") %>%
+                    check_equal()
+                check_function(., "head") %>%
+                    check_result() %>%
+                    check_equal()
+            }
+        </code>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 16</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            my.vector <- c(100,200,300,400,500)
+        </code>
+        <code data-type="sample-code">
+            # Use sum() to total up the values in my.vector
+        </code>
+        <code data-type="solution">
+            sum(my.vector)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "my.vector")
+                check_function(., "sum", not_called_msg = "don't forget to use the sum() function") %>% check_result() %>% check_equal(incorrect_msg = "did you call sum() on my.vector?")
+            }
+        </code>
+        <div data-type="hint">Use sum and my.vector</div>
+    </div>
+</body>
+</html>

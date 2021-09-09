@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 10 Exercise 23</title>
+  <!--Script to run DataCamp Light-->
+  <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula", "okcupiddata")
+      lapply(packages, library, character.only = T)
+      custom_seed(51)
+      Fingers$Height2Group <- ntile(Fingers$Height, 2)
+      Fingers$Height2Group <- factor(Fingers$Height2Group, levels = c(1,2), labels = c("short", "tall"))
+      Height2Group.model <- lm(Thumb ~ Height2Group, data = Fingers)
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      # Fit the Height model for Thumb
+        Height.model <-
+
+      # Print out the best-fitting parameters
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      # Fit the Height model for Thumb
+        Height.model <- lm(Thumb ~ Height, data = Fingers)
+
+      # Print out the best-fitting parameters
+        Height.model
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% {
+        check_object(., "Height.model") %>% check_equal()
+        check_output_expr(., "Height.model")
+      }
+     success_msg("Great thinking!")
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">Remember, you can find the best fitting parameters for a linear model using `lm()`</div>
+  </div>
+</body>
+</html>

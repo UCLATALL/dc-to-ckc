@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 11</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code"></code>
+        <code data-type="sample-code">
+            # Here is the code to create two vectors my.vector and my.vector2. We just made up those names.
+
+            # Run the code and see what happens
+            my.vector <- c(1,2,3,4,5)
+            my.vector2 <- c(10,10,10,10,10)
+
+            # Now write some code to print out these two vectors in the R console. Run the code and see what happens.
+
+        </code>
+        <code data-type="solution">
+            my.vector <- c(1,2,3,4,5)
+            my.vector2 <- c(10,10,10,10,10)
+
+            my.vector   # or print(my.vector)
+            my.vector2  # or print(my.vector2)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., 'my.vector')
+                check_object(., 'my.vector2')
+                check_output_expr(., "my.vector")
+                check_output_expr(., "my.vector2")
+            }
+        </code>
+        <div data-type="hint">Make sure to type the name of each variable to print it to the R console</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 12</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- Fingers %>%
+                filter(Thumb >= 33 & Thumb <= 100) %>%
+                mutate(
+                    zThumb = zscore(Thumb),
+                    zHeight = zscore(Height)
+                )
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+            zHeight.model <- lm(zThumb ~ zHeight, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # this quantifies error from Height.model
+            supernova(Height.model)
+
+            # modify this to quantify error from zHeight.model
+            supernova()
+        </code>
+        <code data-type="solution">
+            # this quantifies error from Height.model
+            supernova(Height.model)
+
+            # modify this to quantify error from zHeight.model
+            supernova(zHeight.model)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_output_expr("supernova(zHeight.model)")
+        </code>
+        <div data-type="hint"></div>
+    </div>
+</body>
+</html>

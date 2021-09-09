@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 5 Exercise 9</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+
+            TinyFingers <- data.frame(
+                StudentID = 1:6,
+                Thumb = c(56, 60, 61, 63, 64, 68)
+            )
+            TinyEmpty.model <- lm(Thumb ~ NULL, data = TinyFingers)
+            TinyFingers <- TinyFingers %>% mutate(
+                Predicted = predict(TinyEmpty.model)
+            )
+        </code>
+        <code data-type="sample-code">
+            # modify this to save the residuals from the TinyEmpty.model
+            TinyFingers$Residual <-
+
+            # this prints TinyFingers
+            TinyFingers
+        </code>
+        <code data-type="solution">
+            TinyFingers$Residual <- TinyFingers$Thumb - TinyFingers$Predicted
+            TinyFingers
+        </code>
+        <code data-type="sct">
+            ex() %>% check_object("TinyFingers") %>%
+                check_column("Residual") %>% check_equal()
+        </code>
+        <div data-type="hint">Subtract <code>Thumb</code> from <code>Predicted</code></div>
+    </div>
+</body>
+</html>

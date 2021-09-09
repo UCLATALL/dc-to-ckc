@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 5 Exercise 5</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+
+            tinydata <- data.frame(outcome = c(5,5,5,10,20))
+            outcome.stats <- favstats(~outcome, data = tinydata)
+        </code>
+        <code data-type="sample-code">
+            # We saved the favstats for outcome to outcome.stats
+            # Modify this to draw a vline representing the median in "green"
+            gf_histogram(~outcome, data = tinydata) %>%
+                gf_vline(xintercept = ~mean, color = "blue", data = outcome.stats)
+        </code>
+        <code data-type="solution">
+             gf_histogram(~outcome, data = tinydata) %>%
+                gf_vline(xintercept = ~median, color = "green", data = outcome.stats)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_histogram") %>%
+                    check_result() %>% check_equal()
+                check_function(., "gf_vline") %>% {
+                    check_arg(., "xintercept") %>% check_equal()
+                    check_arg(., "data") %>% check_equal()
+                    check_arg(., "color") %>% check_equal()
+                    check_result(.) %>% check_equal()
+                }
+            }
+        </code>
+        <div data-type="hint">Make sure to change both the mean line to the median, and the color to green.</div>
+    </div>
+</body>
+</html>

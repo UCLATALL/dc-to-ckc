@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 13</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+            Fingers <- supernova::Fingers %>%
+                mutate(Height2Group = factor(ntile(Height, 2), 1:2, c("short", "tall")))
+        </code>
+        <code data-type="sample-code">
+            # create histograms of Thumb in a grid by Height2Group
+
+            # create a scatterplot of Thumb by Height2Group
+        </code>
+        <code data-type="solution">
+            gf_histogram(~Thumb, data=Fingers) %>%
+                gf_facet_grid(Height2Group ~ .)
+
+            # create a scatterplot of Thumb by Height2Group
+            gf_point(Thumb ~ Height2Group, data=Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_histogram") %>%
+                    check_arg(., "object") %>% check_equal()
+                check_function(., "gf_facet_grid") %>%
+                    check_arg(., "object") %>% check_equal()
+                check_function(., "gf_point") %>%
+                    check_arg(., "object") %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Don't forget to use gf_facet_grid to put your histograms of Height2Group in a grid</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 26</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Load the deloache1997 data frame. Save it in an object called deloache1997
+            deloache1997 <-
+
+            # Run str() on your data frame to see what the data frame contains.
+        </code>
+        <code data-type="solution">
+            deloache1997 <- read.csv("https://raw.githubusercontent.com/UCLATALL/czi-stats-course-files/master/deLoach-1997-data-sim.csv")
+            str(deloache1997)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "deloache1997") %>% check_equal()
+                check_function(., "str") %>% check_arg("object") %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Make sure you run str() on the saved data frame</div>
+    </div>
+</body>
+</html>

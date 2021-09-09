@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 10 Exercise 21</title>
+  <!--Script to run DataCamp Light-->
+  <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula", "okcupiddata")
+      lapply(packages, library, character.only = T)
+      custom_seed(51)
+      Fingers$Height2Group <- ntile(Fingers$Height, 2)
+      Fingers$Height2Group <- factor(Fingers$Height2Group, levels = c(1,2), labels = c("short", "tall"))
+      Height2Group.model <- lm(Thumb ~ Height2Group, data = Fingers)
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      bootSDob1 <- do(1000) * b1(Thumb ~ Height2Group, data = resample(Fingers, 157))
+
+      # Arrange b1s in descending order
+      bootSDob1 <-
+
+      # Print the 25th b1
+
+      # Print the 975th b1
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      bootSDob1 <- do(1000) * b1(Thumb ~ Height2Group, data = resample(Fingers, 157))
+
+      # Arrange b1s in descending order
+      bootSDob1 <- arrange(bootSDob1, desc(b1))
+
+      # Print the 25th b1
+      # Print the 975th b1
+      bootSDob1$b1[25]
+      bootSDob1$b1[975]
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% {
+        check_object(., "bootSDob1") %>% check_equal()
+        check_output_expr(., "bootSDob1$b1[25]")
+        check_output_expr(., "bootSDob1$b1[975]")
+      }
+      success_msg("Great work!")
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">Don't forget to arrange `b1` in descending order</div>
+  </div>
+</body>
+</html>

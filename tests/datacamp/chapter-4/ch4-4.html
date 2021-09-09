@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 4</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-height=500
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Write code to create paneled density histograms of Thumb to explore variables that would do a poor job of explaining variation (categorical variables)
+        </code>
+        <code data-type="solution">
+            # Any of these would be marked correct
+            gf_dhistogram(~Thumb, data = Fingers, fill = ~RaceEthnic) %>%
+                gf_facet_grid(RaceEthnic ~ .)
+
+            gf_dhistogram(~Thumb, data = Fingers, fill = ~Year) %>%
+                gf_facet_grid(Year ~ .)
+
+            gf_dhistogram(~Thumb, data = Fingers, fill = ~Job) %>%
+                gf_facet_grid(Job ~ .)
+
+            gf_dhistogram(~Thumb, data = Fingers, fill = ~MathAnxious) %>%
+                gf_facet_grid(MathAnxious ~ .)
+
+            gf_dhistogram(~Thumb, data = Fingers, fill = ~Interest) %>%
+                gf_facet_grid(Interest ~ .)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_dhistogram") %>% {
+                    check_arg(., "object")
+                    check_arg(., "data")
+                }
+                check_or(.,
+                    check_function(., "gf_facet_grid", index = 1) %>%
+                        check_arg("object"),
+                    check_function(., "gf_facet_grid", index = 2) %>%
+                        check_arg("object"),
+                    check_function(., "gf_facet_grid", index = 3) %>%
+                        check_arg("object"),
+                    check_function(., "gf_facet_grid", index = 4) %>%
+                        check_arg("object"),
+                    check_function(., "gf_facet_grid", index = 5) %>%
+                        check_arg("object")
+                )
+            }
+        </code>
+        <div data-type="hint">Use <code>str()</code> to look up the variables in the data frame to figure out whether they are categorical or quantitative</div>
+    </div>
+</body>
+</html>

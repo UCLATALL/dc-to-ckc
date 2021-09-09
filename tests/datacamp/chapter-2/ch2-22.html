@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 22</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers
+        </code>
+        <code data-type="sample-code">
+            # Write code to create this summary variable
+            Fingers$AvgFinger <-
+
+            # Write code to look at a few lines of Fingers
+        </code>
+        <code data-type="solution">
+            Fingers$AvgFinger <- (Fingers$Thumb + Fingers$Index + Fingers$Middle + Fingers$Ring + Fingers$Pinkie)/5
+            head(Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Fingers") %>% 
+                    check_column("AvgFinger") %>% 
+                    check_equal()
+                check_function(., "head") %>% 
+                    check_arg("x") %>% 
+                    check_equal()
+            }
+        </code>
+        <div data-type="hint">Add up Fingers$Thumb, Fingers$Index, Fingers$Middle, Fingers$Ring, Fingers$Pinkie and divide by 5</div>
+    </div>
+</body>
+</html>

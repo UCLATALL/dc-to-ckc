@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6 Exercise 15</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            set.seed(2)
+            somedata <- 1:10 %>%
+                purrr::set_names(paste0("var", 1:10)) %>%
+                purrr::map_df(~resample(-3:3, 1000))
+        </code>
+        <code data-type="sample-code">
+            # run this code
+            summary(somedata)
+        </code>
+        <code data-type="solution">
+            summary(somedata)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("summary") %>% check_result() %>% check_equal()
+            success_msg("Fantastic! On to the next challenge")
+        </code>
+        <div data-type="hint">Just click Run</div>
+    </div>
+</body>
+</html>

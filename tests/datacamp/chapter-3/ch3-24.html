@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 24</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+
+            HappyPlanetIndex$Region <- recode(
+                HappyPlanetIndex$Region,
+                '1'="Latin America",
+                '2'="Western Nations",
+                '3'="Middle East and North Africa",
+                '4'="Sub-Saharan Africa",
+                '5'="South Asia",
+                '6'="East Asia",
+                '7'="Former Communist Countries"
+            )
+            Pop.stats <- favstats(~ Population, data = HappyPlanetIndex)
+            SmallerCountries <- filter(HappyPlanetIndex, Population < (Pop.stats$Q3 + 1.5*(Pop.stats$Q3 - Pop.stats$Q1)))
+        </code>
+        <code data-type="sample-code">
+            # Make a boxplot of Population from the SmallerCountries
+            gf_boxplot(Population ~ 1, data=SmallerCountries)
+        </code>
+        <code data-type="solution">
+            # Make a boxplot of Population from the SmallerCountries
+            gf_boxplot(Population ~ 1, data=SmallerCountries)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("gf_boxplot") %>% check_result() %>% check_equal()
+        </code>
+        <div data-type="hint">Just click the Submit button</div>
+    </div>
+</body>
+</html>

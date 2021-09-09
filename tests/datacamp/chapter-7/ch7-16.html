@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 16</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(mosaic)
+            require(lsr)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- Fingers %>% mutate(
+                Height2Group = ntile(Height, 2)
+            )
+
+        </code>
+        <code data-type="sample-code">
+            # this creates Height2Group, a numeric variable
+            Fingers$Height2Group <- ntile(Fingers$Height, 2)
+
+            # this is how we used factor() before:
+            Fingers$Sex <- factor(Fingers$Sex, levels = c(1,2), labels = c("female", "male"))
+
+            # modify this line so that 1s are labeled as "short" and 2s are labeled as "tall"
+            Fingers$Height2Group <- factor()
+
+            # this prints out 10 rows of Fingers for the selected columns
+            head(select(Fingers, Thumb, Height, Height2Group), 10)
+        </code>
+        <code data-type="solution">
+            Fingers$Height2Group <- factor(Fingers$Height2Group, levels = 1:2, labels = c("short", "tall"))
+
+            head(select(Fingers, Thumb, Height, Height2Group), 10)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Fingers") %>% check_column("Height2Group") %>% check_equal()
+                check_output_expr(., "head(select(Fingers, Thumb, Height, Height2Group), 10)")
+            }
+        </code>
+        <div data-type="hint">Don't forget to select the <code>Height2Group</code> column from the <code>Fingers</code> data using <code>$</code> when converting it to a factor</div>
+    </div>
+</body>
+</html>

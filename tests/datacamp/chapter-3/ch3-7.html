@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 7</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # This will create a relative frequency histogram of Age
+            gf_dhistogram(~Age, data = MindsetMatters, fill = "coral2")
+
+            # Add code below to create a frequency histogram of Age
+        </code>
+        <code data-type="solution">
+            gf_dhistogram(~Age, data = MindsetMatters, fill = "coral2", bins = 20)
+            gf_histogram(~Age, data = MindsetMatters)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function(., "gf_histogram") %>% {
+                check_arg(., "object") %>% check_equal()
+                check_arg(., "data") %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">The first line of code given is almost right. Remove the part that makes the first histogram a density histogram</div>
+    </div>
+</body>
+</html>

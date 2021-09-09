@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 7</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+            RBackend::custom_seed(14)
+        </code>
+        <code data-type="sample-code">
+            # save the simulated 10 means
+            bunchofmeans <- do(10) * mean(resample(1:6, 24))
+
+            # look at the first 6 lines of the new data.frame
+        </code>
+        <code data-type="solution">
+           bunchofmeans <- do(10) * mean(resample(1:6, 24))
+           head(bunchofmeans)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "bunchofmeans") %>% check_equal()
+                check_function(., "head") %>% check_result() %>% check_equal()
+            }
+        </code>
+    </div>
+</body>
+</html>

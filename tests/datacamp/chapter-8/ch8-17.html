@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 17</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- filter(Fingers, Thumb >= 33 & Thumb <= 100)
+
+        </code>
+        <code data-type="sample-code">
+            # this creates the best fitting Height.model
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+
+            # What would the Height.model predict for the Thumb length
+            # of someone who is 73.5 inches tall?
+
+        </code>
+        <code data-type="solution">
+            # this creates the best fitting Height.model
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+
+            # What would the Height.model predict for the Thumb length
+            # of someone who is 73.5 inches tall?
+            b0(Height.model) + b1(Height.model) * 73.5
+        </code>
+        <code data-type="sct">
+            ex() %>% check_or(
+                check_operator(., "+") %>% check_result() %>% check_equal(),
+                check_output_expr(., b0(Height.model) + b1(Height.model) * 73.5),
+                check_output(., "67.36895"),
+                check_output(., "67.369"),
+                check_output(., "67.37"),
+                check_output(., "67.4")
+            )
+        </code>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "dc-to-ckc",
+  "version": "0.0.1",
+  "description": "Convert DataCamp Exercises to CKCode exercises",
+  "main": "index.js",
+  "scripts": {
+    "dev:clean": "rimraf tests/converted",
+    "dev": "npm run dev:clean && node index.js convert tests/pages tests/datacamp tests/converted",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "dc-to-ckc": "index.js"
+  },
+  "author": "Adam Blake <adamblake@g.ucla.edu>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "dedent": "^0.7.0",
+    "jsdom": "^17.0.0",
+    "yargs": "^17.1.1"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.2",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 14</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers %>%
+                mutate_if(is.factor, as.numeric) %>%
+                arrange(desc(Sex)) %>%
+                {.[1, "FamilyMembers"] <- 2; . } %>%
+                {.[1, "Height"] <- 62; . }
+        </code>
+        <code data-type="sample-code">
+            # Interest has been coded numerically in the Fingers data.frame
+            # Modify the following to convert it to factor and store it as Interest.factor in Fingers
+            Fingers$Interest.factor <-
+        </code>
+        <code data-type="solution">
+            Fingers$Interest.factor <- factor(Fingers$Interest)
+        </code>
+        <code data-type="sct">
+            ex() %>%
+                check_object("Fingers") %>%
+                check_column("Interest.factor") %>%
+                check_equal()
+        </code>
+        <div data-type="hint">Use <code>factor()</code> and <code>Fingers$Interest</code>.</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 16</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+
+            custom_seed(7)
+            model.pop <- 1:6
+            W.pop <- c(rep(1,5), 2, rep(3,10), rep(4,10), 5, rep(6,5))
+        </code>
+        <code data-type="sample-code">
+            # create a sample that draws 1000 times from W.pop
+            largesample <-
+
+            # add largesample to the weird data frame
+            weird <- data.frame()
+
+            # this will create a density histogram of your largesample
+            gf_dhistogram(~ largesample, data = weird, color="darkgray", fill="mistyrose", bins=6)
+        </code>
+        <code data-type="solution">
+            largesample <- resample(W.pop, 1000)
+            weird <- data.frame(largesample)
+            gf_dhistogram(~ largesample, data = weird, color="darkgray", fill="mistyrose", bins=6)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "W.pop") %>% check_equal()
+                check_object(., "largesample") %>% check_equal()
+                check_object(., "weird") %>% check_equal()
+                check_or(., 
+                    check_function(., "gf_dhistogram") %>% {
+                        check_arg(., "object") %>% check_equal(eval = FALSE)
+                        check_arg(., "data") %>% check_equal()
+                    },
+                    override_solution_code(., '{
+                        largesample <- resample(W.pop, 1000)
+                        weird <- data.frame(largesample)
+                        gf_dhistogram(~weird, color="darkgray", fill="mistyrose", bins=6)
+                    }') %>%
+                        check_function("gf_dhistogram") %>%
+                            check_arg("object") %>%
+                            check_equal(eval = FALSE)
+                )
+            }
+        </code>
+        <div data-type="hint">Use `resample()` to sample with replacement</div>
+    </div>
+</body>
+</html>

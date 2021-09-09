@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6 Exercise 12</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+            custom_seed(1)
+        </code>
+        <code data-type="sample-code">
+            # this resamples numbers -3 to 3, 1000 times
+            var1 <- resample(-3:3, 1000)
+
+            # put var1 into a data frame called somedata
+            somedata <-
+        </code>
+        <code data-type="solution">
+            var1 <- resample(-3:3, 1000)
+            somedata <- data.frame(var1)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_object("somedata") %>% check_equal()
+        </code>
+        <div data-type="hint">Don't forget to make <code>var1</code> a data frame using the <code>data.frame()</code> function</div>
+    </div>
+</body>
+</html>

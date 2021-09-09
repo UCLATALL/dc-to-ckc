@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 10</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code"></code>
+        <code data-type="sample-code">
+            # Assign 5 to num and 10 to NUM
+            num <-
+            NUM <-
+
+            # Write the name of the object that contains 10 and then press the RUN button
+            # Doing so prints out the contents of that object
+
+        </code>
+        <code data-type="solution">
+            num <- 5
+            NUM <- 10
+            NUM
+        </code>
+        <code data-type="sct">
+            msg_undefined <- "Make sure to define both variables: num and NUM."
+            msg_incorrect <- "Make sure you assign the correct value to each variable."
+            msg_not_print <- "Don't forget to print out the object that contains 10."
+            ex() %>% {
+                check_object(., 'num', msg_undefined) %>% check_equal(msg_incorrect)
+                check_object(., 'NUM', msg_undefined) %>% check_equal(msg_incorrect)
+                check_output_expr(., "NUM", missing_msg = msg_not_print)
+            }
+        </code>
+        <div data-type="hint">Don't forget to print out the object that contains 10.</div>
+    </div>
+</body>
+</html>

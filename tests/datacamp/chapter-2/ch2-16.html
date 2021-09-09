@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 16</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers
+        </code>
+        <code data-type="sample-code">
+            # Modify the code to show the Thumb variable for the first 10 students in the Fingers data frame
+            head(select(Fingers, RaceEthnic), 3)
+        </code>
+        <code data-type="solution">
+            head(select(Fingers, Thumb), 10)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "head", not_called_msg = "Have you used head to look at the first 10 rows of the RaceEthnic variable?") %>% {
+                    check_arg(., "x") %>% check_equal(incorrect_msg = "Have you used the select function to select the Thumb variable from Fingers?")
+                    check_arg(., "n") %>% check_equal(incorrect_msg = "Have you set n = 10?")
+                }
+                check_function(., "select", not_called_msg = "Have you used select to look at just the Thumb variable in the Fingers data frame?") %>% {
+                    check_arg(., "...", arg_not_specified_msg = "Have you specified the Thumb variable?") %>% check_equal()
+                    check_arg(., ".data", arg_not_specified_msg = "Have you specified the Fingers data frame?") %>% check_equal()
+                }
+            }
+        </code>
+        <div data-type="hint">Use select(Fingers, Thumb). Don't forget to set n=10 </div>
+    </div>
+</body>
+</html>

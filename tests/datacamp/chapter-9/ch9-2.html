@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 2</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            RBackend::custom_seed(10)
+        </code>
+        <code data-type="sample-code">
+            # Generate a giant sample of 10000 die rolls
+            giantsample <- resample()
+
+            # Calculate the mean of the giant sample
+        </code>
+        <code data-type="solution">
+            # Generate a giant sample of 10000 die rolls
+            giantsample <- resample(1:6, 10000)
+
+            # Calculate the mean of the giant sample
+            mean(giantsample)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "resample") %>% check_arg("...") %>% check_equal()
+                check_function(., "mean") %>% check_result() %>% check_equal()
+            }
+        </code>
+    </div>
+</body>
+</html>

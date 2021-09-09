@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6 Exercise 9</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Thumb.stats will have mean and sd in it
+            Thumb.stats <- favstats(~ Thumb, data = Fingers)
+
+            # write code to calculate the z score for a 65.1 mm Thumb
+        </code>
+        <code data-type="solution">
+            Thumb.stats <- favstats(~Thumb, data = Fingers)
+            (65.1 - Thumb.stats$mean) / Thumb.stats$sd
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Thumb.stats") %>% check_equal()
+                check_output_expr(., "(65.1 - Thumb.stats$mean) / Thumb.stats$sd")
+            }
+        </code>
+        <div data-type="hint">Review the exercise above. Remember, you can access values in <code>Thumb.stats</code> using the <code>$</code> operator. For example, <code>Thumb.stats$mean</code></div>
+    </div>
+</body>
+</html>

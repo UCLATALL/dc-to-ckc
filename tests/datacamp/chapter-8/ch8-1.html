@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 1</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            TinyFingers <- data.frame(
+                Sex = as.factor(rep(c("female", "male"), each = 3)),
+                Thumb = c(56, 60, 61, 63, 64, 68),
+                Height = c(62, 66, 67, 63, 68, 71)
+            )  %>% mutate(
+                Height2Group = recode(ntile(Height, 2), '1' = "1-Short", '2' = "2-Tall"),
+                Height3Group = recode(ntile(Height, 2), '1' = "1-Short", '2' = "2-Medium", '3' = "3-Tall")
+            )
+        </code>
+        <code data-type="sample-code">
+            # modify this to fit Thumb as a function of Height
+            TinyHeight.model <- lm()
+
+            # this prints the best-fitting estimates
+            TinyHeight.model
+        </code>
+        <code data-type="solution">
+            TinyHeight.model <- lm(Thumb ~ Height, data = TinyFingers)
+            TinyHeight.model
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "TinyHeight.model") %>% check_equal()
+                check_output_expr(., "print(TinyHeight.model)")
+            }
+        </code>
+        <div data-type="hint">Model Thumb length as a function of Height</div>
+    </div>
+</body>
+</html>

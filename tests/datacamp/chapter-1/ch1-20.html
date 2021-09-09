@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 20</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            many.hellos <- c("hi", "hello", "hola", "bonjour", "ni hao", "merhaba")
+        </code>
+        <code data-type="sample-code">
+            # Write some code that will store the answer to the question, "is the first element in the vector many.hellos "hi"? in an R object called firstIsHi
+        </code>
+        <code data-type="solution">
+            firstIsHi <- many.hellos[1] == "hi"
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_operator(., "==") %>% check_result() %>% check_equal()
+                check_object(., "firstIsHi") %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Use the [] to select the first element and use == to answer whether or not the element is equal to "hi"</div>
+    </div>
+</body>
+</html>

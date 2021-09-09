@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 30</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+            require(MindsetMatters)
+            require(HappyPlanetIndex)
+            require(fivethirtyeight)
+        </code>
+        <code data-type="sample-code">
+            # find and print the best-fitting estimates for the unemployment model
+
+
+            # find and print the best-fitting estimates for the income model
+        </code>
+        <code data-type="solution">
+            # find and print the best-fitting estimates for the unemployment model
+            lm(avg_hatecrimes_per_100k_fbi ~ share_unemp_seas, data = hate_crimes)
+
+            # find and print the best-fitting estimates for the income model
+            lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc, data = hate_crimes)
+        </code>
+        <code data-type="sct">
+            not_called = "Did you use the lm() function to find and print the best-fitting estimates?"
+            ex() %>% {
+                check_function(., "lm", index = 1, not_called_msg = not_called) %>% check_result() %>% check_equal(incorrect_msg = "Did you model avg_hatecrimes_per_100k_fbi as a function of share_unemp_seas in the hate_crimes data frame?")
+
+                check_function(., "lm", index = 2, not_called_msg = not_called) %>% check_result() %>% check_equal(incorrect_msg = "Did you model avg_hatecrimes_per_100k_fbi as a function of median_house_inc in the hate_crimes data frame?" )
+            }
+        </code>
+    </div>
+</body>
+</html>

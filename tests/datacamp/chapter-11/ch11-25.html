@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 25</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # create a randomized sampling distribution of PREs
+            SDoPRE <-
+
+            # how many of our randomized PREs are greater than our sample PRE
+            samplePRE <- PRE(Thumb ~ Height, data = Fingers)
+            tally()
+        </code>
+        <code data-type="solution">
+            # create a randomized sampling distribution of PREs
+            SDoPRE <- do(1000) * PRE(Thumb ~ shuffle(Height), data = Fingers)
+
+            # how many of our randomized PREs are greater than our sample PRE
+            samplePRE <- PRE(Thumb ~ Height, data = Fingers)
+            tally(~PRE>samplePRE, data = SDoPRE)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "do")
+                check_function(., "PRE", index = 1) %>% check_arg("formula") %>% check_equal(incorrect_msg = "Did you remember to shuffle the Height variable?")
+                check_function(., "PRE", index = 1) %>% check_arg("data") %>% check_equal()
+                check_function(., "tally") %>% check_result() %>% check_equal()
+            }
+        </code>
+    </div>
+</body>
+</html>

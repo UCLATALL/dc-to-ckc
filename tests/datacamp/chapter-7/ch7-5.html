@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 5</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # here is the model we fit before
+            Sex.model <- lm(Thumb ~ Sex, data = Fingers)
+
+            # generate all possible predictions from Sex.model
+            Fingers$Sex.predicted <-
+
+            # this will print out 10 lines of Fingers
+            head(select(Fingers, Sex, Thumb, Sex.predicted), 10)
+        </code>
+        <code data-type="solution">
+            Sex.model <- lm(Thumb ~ Sex, data = Fingers)
+            Fingers$Sex.predicted <- predict(Sex.model)
+            head(select(Fingers, Sex, Thumb, Sex.predicted), 10)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Sex.model") %>% check_equal()
+                check_function(., "predict") %>% check_result() %>% check_equal()
+                check_object(., "Fingers") %>% check_column(., "Sex.predicted") %>% check_equal()
+                check_function(., "head") %>% check_result() %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Use <code>predict()</code> to predict values for each case.</div>
+    </div>
+</body>
+</html>

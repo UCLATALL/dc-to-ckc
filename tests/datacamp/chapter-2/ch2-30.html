@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 30</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+        	# Run this code
+        	filter(Fingers, Thumb == 66)
+        </code>
+        <code data-type="solution">
+            
+            filter(Fingers, Thumb == 66)
+
+        </code>
+        <code data-type="sct">
+             <!--Test output expresion for pre-provided code to make sure student didn't delete it --> 
+            ex() %>% check_output_expr("filter(Fingers, Thumb == 66)") 
+        </code>
+        <div data-type="hint">Make sure you don't delete the code!</div>
+    </div>
+</body>
+</html>

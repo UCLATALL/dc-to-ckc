@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 24</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers %>%
+                mutate(Job = as.numeric(Job))
+        </code>
+        <code data-type="sample-code">
+            # Use `ntile()` to cut Height into groups
+            Fingers$Height2Group <-
+
+            # Label the levels "short" and "tall"
+            Fingers$Height2Group <- factor(Fingers$Height2Group, levels = , labels = )
+
+            # This prints out the first 6 observations of Height and Height2Group
+            head(select(Fingers, Height, Height2Group))
+        </code>
+        <code data-type="solution">
+            Fingers$Height2Group <- ntile(Fingers$Height, 2)
+                                    
+            # Note: There are two ways to write levels in the code below c(1,2) or c(1:2)
+            Fingers$Height2Group <- factor(Fingers$Height2Group, levels = c(1,2), labels = c("short", "tall"))
+            
+            head(select(Fingers, Height, Height2Group))
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "ntile", not_called_msg = "Have you called ntile()?") %>% 
+                check_arg("n") %>% check_equal(incorrect_msg = "Have you set n = 2?")
+                
+                check_function(., "factor", not_called_msg = "Make sure not to remove the factor() function") %>% {
+                    check_arg(., "levels") %>% check_equal(incorrect_msg = "Have you set the levels to 1 and 2?")
+                    check_arg(., "labels") %>% check_equal(incorrect_msg = "Have you set labels to 'short' and 'tall'?")
+                }
+            
+                . %>% check_or(
+                    check_output_expr(., "head(select(Fingers, Height, Height2Group))"),
+                    check_output_expr(., "head(select(Fingers, Height2Group, Height))")
+                )
+            }
+
+        <!-- test_function_result("ntile", incorrect_msg="Did you use `ntile()` with the arguments `Fingers$Height` and `2`?")
+        test_function("factor", args=c("levels","labels"), incorrect_msg="Did you set levels= `c(1,2)` and labels =`c('short','tall')`?")
+        test_or(test_output_contains("head(select(Fingers, Height, Height2Group))"),
+                test_output_contains("head(select(Fingers, Height2Group, Height))"), incorrect_msg="Did you use `head()` and `select()` on `Fingers`, `Height`, and `Height2Group`?") -->
+        </code>
+        <div data-type="hint">Use ntile() to split Fingers$Height into 2 categories</div>
+    </div>
+</body>
+</html>

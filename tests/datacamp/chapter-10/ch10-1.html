@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 10 Exercise 1</title>
+    <!--DataCamp Light script-->
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula")
+      lapply(packages, library, character.only = T)
+      Thumb.stats <- favstats(~ Thumb, data = Fingers) #creates Thumb.stats
+      set.seed(34) #sets the random number generator
+      simSDoM <- do (1000) * mean(rnorm(157, Thumb.stats$mean, Thumb.stats$sd)) #simulates sampling distribution
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      # arrange simSDoM in descending order by mean
+      simSDoM <-
+
+      # print first 6 lines of simSDoM
+
+      # print last 6 lines of simSDoM
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      # arrange simSDoM in descending order by mean
+      simSDoM <- arrange(simSDoM, desc(mean))
+      # print first 6 lines of simSDoM
+      head(simSDoM)
+      # print last 6 lines of simSDoM
+      tail(simSDoM)
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% {
+        check_output_expr(., "head(simSDoM)")
+        check_output_expr(., "tail(simSDoM)")
+        check_object(., "simSDoM") %>% check_equal()
+      }
+       success_msg("Great thinking!")
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">
+      Use the `desc()` function to arrange in descending order
+    </div>
+  </div>
+</body>
+</html>

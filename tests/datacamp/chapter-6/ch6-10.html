@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6 Exercise 10</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            # do not remove setup code here even though somedata1 isn't used!
+            # it is important to call set.seed(1) and rnorm both times so that the tally matches the figures in the text
+            set.seed(1)
+            somedata1 <- data.frame(
+                outcome = rnorm(500, 100, 4),
+                explanatory = rep(1, 100)
+            )
+            somedata2 <- data.frame(
+                outcome = rnorm(500, 100, 12),
+                explanatory = rep(2, 100)
+            )
+            somedata2$greaterthan110 <- somedata2$outcome > 110
+        </code>
+        <code data-type="sample-code">
+            # get a tally of greaterthan110 in somedata2
+            tally()
+
+            # get the tally in proportions
+            tally()
+        </code>
+        <code data-type="solution">
+            tally(~greaterthan110, data = somedata2)
+            tally(~greaterthan110, data = somedata2, format = "proportion")
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "tally", index = 1) %>% check_result() %>% check_equal()
+                check_function(., "tally", index = 2) %>% check_result() %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Don't forget to add the argument that sets the output format to <code>"proportion"</code></div>
+    </div>
+</body>
+</html>

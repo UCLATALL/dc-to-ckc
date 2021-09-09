@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 15</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            my.vector <- c(1,2,3,4,5)
+            my.vector <- my.vector * 100
+        </code>
+        <code data-type="sample-code">
+            # Write code to get the 4th value in my.vector
+        </code>
+        <code data-type="solution">
+            my.vector[4]
+        </code>
+        <code data-type="sct">
+            ex() %>% check_output_expr("my.vector[4]", missing_msg = "Have you used `[4]` to print out the 4th number in `my.vector`?")
+        </code>
+        <div data-type="hint">Use `[ ]` to index</div>
+    </div>
+</body>
+</html>

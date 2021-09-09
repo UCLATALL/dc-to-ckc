@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 3</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- filter(Fingers, Thumb >= 33 & Thumb <= 100)
+        </code>
+        <code data-type="sample-code">
+            # modify this to fit the Height model of Thumb for the Fingers data
+            Height.model <-
+
+            # this prints best estimates
+            Height.model
+        </code>
+        <code data-type="solution">
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+            Height.model
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Height.model") %>% check_equal()
+                check_output_expr(., "Height.model")
+            }
+        </code>
+        <div data-type="hint">Model <code>Thumb</code> as a function of <code>Height</code></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 5 Exercise 4</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # modify this code to make a histogram of Age in the MindsetMatters data frame
+            gf_histogram(~ , data = MindsetMatters)
+
+            # save the favstats for Age to Age.stats
+
+            # print out the contents of Age.stats
+        </code>
+        <code data-type="solution">
+            gf_histogram(~Age, data = MindsetMatters)
+            Age.stats <- favstats(~Age, data = MindsetMatters)
+            Age.stats
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_histogram") %>% check_result() %>% check_equal()
+                check_object(., "Age.stats") %>% check_equal()
+                check_output_expr(., "Age.stats")
+            }
+        </code>
+        <div data-type="hint">Call <code>gf_histogram()</code> on <code>Age</code> in the <code>MindsetMatters</code> data frame. Don't forget to print <code>Age.stats</code></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 21</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            set.seed(2)
+            Thumb.stats <- favstats(~Thumb, data = Fingers)
+            SDoM <- do(1000) * mean(rnorm(157, Thumb.stats$mean, Thumb.stats$sd))
+        </code>
+        <code data-type="sample-code">
+            # modify this code to shade means greater than or equal to 65
+            gf_histogram(~mean, data = SDoM, fill = ~mean >= 61)
+        </code>
+        <code data-type="solution">
+            # modify this code to shade means >= 65
+            gf_histogram(~mean, data = SDoM, fill = ~mean >= 65)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("gf_histogram") %>% check_arg("fill") %>% check_equal()
+        </code>
+    </div>
+</body>
+</html>

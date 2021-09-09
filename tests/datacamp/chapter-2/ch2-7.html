@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 7</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            MindsetMatters <- Lock5Data::MindsetMatters %>%
+                mutate(Condition = factor(Cond, levels = c(1, 0), labels = c("Informed", "Uninformed")))
+        </code>
+        <code data-type="sample-code">
+            # save MindsetMatters, arranged by Age, back to MindsetMatters
+            arrange(MindsetMatters, Age)
+
+            # write code to print out the first 6 rows of MindsetMatters
+        </code>
+        <code data-type="solution">
+            MindsetMatters <- arrange(MindsetMatters, Age)
+            head(MindsetMatters)
+        </code>
+        <code data-type="sct">
+            no_save <- "Make sure to both `arrange()` `MindsetMatters` by `Age` *and* save the arranged data frame back to `MindsetMatters`."
+            ex() %>% {
+                check_object(., "MindsetMatters") %>% check_equal(incorrect_msg = no_save)
+                check_function(., "arrange") %>% check_arg("...") %>% check_equal()
+                check_function(., "head") %>% check_result() %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Save the arranged data set back to MindsetMatters. Then print the first six rows of MindsetMatters. </div>
+    </div>
+</body>
+</html>

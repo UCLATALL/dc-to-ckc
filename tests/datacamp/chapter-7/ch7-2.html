@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 2</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            TinyFingers <- data.frame(
+                Sex = rep(c("female", "male"), each = 3),
+                Thumb = c(56, 60, 61, 63, 64, 68)
+            )
+            TinySex.model <- lm(Thumb ~ Sex, data = TinyFingers)
+            TinySex.fun <- makeFun(TinySex.model)
+        </code>
+        <code data-type="sample-code">
+            # run this code
+            TinySex.fun("male")
+        </code>
+        <code data-type="solution">
+            TinySex.fun("male")
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("TinySex.fun") %>% check_result()
+        </code>
+        <div data-type="hint">Just Submit the code as is</div>
+    </div>
+</body>
+</html>

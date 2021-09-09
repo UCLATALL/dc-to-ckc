@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 6</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-height=500
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+
+            MindsetMatters <- Lock5withR::MindsetMatters %>%
+                mutate(WtLost = ifelse(Wt2 < Wt, "lost", "not lost"))
+        </code>
+        <code data-type="sample-code">
+            # Create a bar graph of WtLost, then use gf_facet_grid() to compare the outcome across conditions
+        </code>
+        <code data-type="solution">
+            gf_bar(~WtLost, data = MindsetMatters) %>%
+                gf_facet_grid(Condition ~ .)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_bar") %>%
+                    check_result() %>% check_equal()
+                check_or(.,
+                    check_function(., "gf_facet_grid") %>%
+                        check_result() %>% check_equal(),
+                    check_function(., "gf_facet_grid") %>%
+                        check_arg("object") %>% check_equal()
+                )
+            }
+        </code>
+        <div data-type="hint">Don't forget create a facet grid by <code>Condition</code></div>
+    </div>
+</body>
+</html>

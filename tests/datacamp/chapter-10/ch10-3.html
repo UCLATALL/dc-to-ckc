@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 10 Exercise 3</title>
+    <!--Script to run DataCamp Light-->
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula")
+      lapply(packages, library, character.only = T)
+      Thumb.stats <- favstats(~ Thumb, data = Fingers) #creates Thumb.stats
+      set.seed(34) #sets the random number generator
+      simSDoM <- do (1000) * mean(rnorm(157, Thumb.stats$mean, Thumb.stats$sd)) #simulates sampling distribution
+      simSDoM <- arrange(simSDoM, desc(mean)) #arranges by mean
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      # This returns the margin of error from the upper cut off to the mean
+      simSDoM$mean[25] - Thumb.stats$mean
+
+      # Write code to find the margin of error from the mean to the lower cut off
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      # This returns the margin of error from the upper cut off to the mean
+      simSDoM$mean[25] - Thumb.stats$mean
+
+      # Write code to find the margin of error from the mean to the lower cut off
+      Thumb.stats$mean - simSDoM$mean[975]
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% {
+        check_output_expr(., "simSDoM$mean[25] - Thumb.stats$mean")
+        check_output_expr(., "Thumb.stats$mean - simSDoM$mean[975]")
+      }
+      success_msg("Awesome!")
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">
+      Make sure to change the value of the cutoff to `975`
+    </div>
+  </div>
+</body>
+</html>

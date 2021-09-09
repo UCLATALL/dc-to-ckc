@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 1</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # try running this code
+            gf_histogram(~Thumb, data = Fingers)
+        </code>
+        <code data-type="solution">
+            gf_histogram(~Thumb, data = Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_histogram") %>% check_arg("object", arg_not_specified_msg = "Make sure to keep ~Thumb") %>% check_equal()
+                check_function(., "gf_histogram") %>% check_arg("data", arg_not_specified_msg = "Make sure to specify data") %>% check_equal()
+                check_function(., "gf_histogram") %>% check_result() %>% check_equal(incorrect_msg = "For this exercise, make sure not to change the code")
+            }
+        </code>
+    </div>
+</body>
+</html>

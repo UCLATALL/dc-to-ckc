@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 17</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Write code to sort Wt from lowest to highest
+        </code>
+        <code data-type="solution">
+            # Solution 1
+            arrange(MindsetMatters, Wt)
+
+            # Solution 2
+            sort(MindsetMatters$Wt)
+        </code>
+        <code data-type="sct">3
+            ex() %>% check_or(
+                check_function(., "arrange", not_called_msg = "If you were trying to use `sort`, that's acceptable but your code must have resulted in an error.") %>% check_result() %>% check_equal(),
+                check_function(., "sort") %>% check_result() %>% check_equal()
+            )
+        </code>
+        <div data-type="hint">You could use either sort() or arrange() to sort Wt from lowest to highest</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 26</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Add arguments color and fill to these bar graphs
+            # Make sure to add color and fill to both of the graphs
+            gf_bar(~ Sex, data = Fingers)
+            gf_bar(~ RaceEthnic, data = Fingers)
+        </code>
+        <code data-type="solution">
+            # the colors below are just examples. Any color is acceptable as long as you use the color and fill arguments
+            gf_bar(~ Sex, data = Fingers, color="darkgray", fill="mistyrose" )
+            gf_bar(~ RaceEthnic, data = Fingers, color="darkgray", fill="mistyrose")
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_bar", index = 1) %>% {
+                    check_arg(., "color")
+                    check_arg(., "fill")
+                }
+                check_function(., "gf_bar", index = 2) %>% {
+                    check_arg(., "color")
+                    check_arg(., "fill")
+                }
+            }
+        </code>
+        <div data-type="hint">Remember to specify both the color and fill for both bar graphs</div>
+    </div>
+</body>
+</html>

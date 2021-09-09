@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 10 Exercise 4</title>
+    <!--Script to run DataCamp Light-->
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula")
+      lapply(packages, library, character.only = T)
+      custom_seed(2)
+    </code>
+
+    <!--Student view-->
+    <code data-type="sample-code">
+      # This calculates the favstats for Thumb
+       Thumb.stats <- favstats(~ Thumb, data = Fingers)
+
+      # Modify this code to generate samples from a population with a mean of 58.7
+       simSDoMlower <- do (1000) * mean(rnorm(157, mean = , sd = Thumb.stats$sd))
+
+      # Make a histogram of this sampling distribution
+      # Draw a vertical line at the mean of the sampling distribution (58.7)
+      # Draw a vertical line at our sample mean (60.1)
+    </code>
+
+    <!--Solution environment-->
+    <code data-type="solution">
+      # This calculates the favstats for Thumb
+      Thumb.stats <- favstats(~ Thumb, data = Fingers)
+
+      # Modify this code to generate samples from a population with a mean of 58.7
+       simSDoMlower <- do (1000) * mean(rnorm(157,58.7, Thumb.stats$sd))
+
+      # Make a histogram of this sampling distribution
+      # Draw a vertical line at the mean of the sampling distribution (58.7)
+      # Draw a vertical line at our sample mean (60.1)
+        gf_histogram(~mean, data = simSDoMlower) %>%
+          gf_vline(xintercept = 58.7, color = "darkorange3") %>%
+          gf_vline(xintercept = Thumb.stats$mean, color = "black") %>%
+          gf_labs(title = "Lower Bound Sampling Distribution of the Mean")
+    </code>
+
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% check_object("simSDoMlower") %>% check_equal()
+      <!--Allow multiple solutions for gf_histogram-->
+      ex() %>% check_or(
+        check_function(., "gf_histogram") %>% {
+        check_arg(., "object") %>% check_equal()
+        check_arg(., "data") %>% check_equal()
+        },
+        override_solution(., "gf_histogram(simSDoMlower, ~mean)") %>%
+        check_function("gf_histogram") %>% {
+        check_arg(., "object") %>% check_equal()
+        check_arg(., "gformula") %>% check_equal()
+        },
+        override_solution(., "gf_histogram(~simSDoMlower$mean)") %>%
+        check_function("gf_histogram") %>%
+        check_arg("object") %>%
+        check_equal()
+        )
+     <!--Check gf_vline-->
+     
+    ex() %>% check_function("gf_vline", index = 1) %>%
+        check_arg(., "xintercept") %>% check_equal() 
+        
+    ex() %>% check_or(
+       check_function(., "gf_vline", index = 2) %>% {
+         check_arg(., "xintercept") %>% check_equal()
+        }, 
+        override_solution(., "gf_histogram(~mean, data = simSDoMlower) %>%
+          gf_vline(xintercept = 58.7) %>%
+          gf_vline(xintercept = 60.1)") %>%
+        check_function("gf_vline", index = 2) %>% {
+        check_arg(., "xintercept") %>% 
+        check_equal()
+        }
+     )
+
+    success_msg("That was tough! Way to work through it.")
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">
+      Use gf_vline() to add a line to your graph. Don't forget the %>% operator!
+    </div>
+  </div>
+</body>
+</html>

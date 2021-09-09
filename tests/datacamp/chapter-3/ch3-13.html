@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 13</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+            custom_seed(7)
+        </code>
+        <code data-type="sample-code">
+            model.pop <- 1:6
+
+            # create samples #3, #4, #5 of 24 dice rolls
+            sample3 <-
+            sample4 <-
+            sample5 <-
+
+            # add these new samples to the dicerolls data frame
+            dicerolls <-
+
+            # this will create a density histogram of your sample3
+            # add onto it to include a density plot
+            gf_dhistogram(~ sample3, data = dicerolls, color="darkgray", fill="springgreen", bins=6)
+
+            # create density histograms of sample4 and sample5 with density plots
+        </code>
+        <code data-type="solution">
+        model.pop <- 1:6
+
+        # create samples
+        sample3 <- resample(model.pop, 24)
+        sample4 <- resample(model.pop, 24)
+        sample5 <- resample(model.pop, 24)
+        dicerolls <- data.frame(sample3, sample4, sample5)
+
+        # create density histograms of sample4 and sample5 with density plots
+        gf_dhistogram(~sample3, data = dicerolls, color="darkgray", fill="springgreen", bins=6) %>%
+            gf_density()
+        gf_dhistogram(~sample4, data=dicerolls, color="darkgray", fill="springgreen", bins=6) %>%
+            gf_density()
+        gf_dhistogram(~sample5, data=dicerolls, color="darkgray", fill="springgreen", bins=6) %>%
+            gf_density()
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "sample3") %>% check_equal()
+                check_object(., "sample4") %>% check_equal()
+                check_object(., "sample5") %>% check_equal()
+                check_object(., "dicerolls") %>% check_equal()
+                check_function(., "gf_dhistogram", index = 1) %>% {
+                    check_arg(., "object") %>% check_equal(eval = FALSE)
+                    check_arg(., "data") %>% check_equal()
+                }
+                check_function(., "gf_dhistogram", index = 2) %>% {
+                    check_arg(., "object") %>% check_equal(eval = FALSE)
+                    check_arg(., "data") %>% check_equal()
+                }
+                check_function(., "gf_dhistogram", index = 3) %>% {
+                    check_arg(., "object") %>% check_equal(eval = FALSE)
+                    check_arg(., "data") %>% check_equal()
+                }
+                check_function(., "gf_density", index = 1)
+                check_function(., "gf_density", index = 2)
+                check_function(., "gf_density", index = 3)
+            }
+        </code>
+        <div data-type="hint"></div>
+    </div>
+</body>
+</html>

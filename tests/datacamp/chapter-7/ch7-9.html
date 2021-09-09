@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 9</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Sex.model <- lm(Fingers$Thumb ~ Fingers$Sex)
+            Fingers$Sex.resid <- resid(Sex.model)
+        </code>
+        <code data-type="sample-code">
+            # this creates histograms with lines at the mean of Thumb length for each Sex
+            Thumb.stats <- favstats(Thumb ~ Sex, data = Fingers)
+            gf_dhistogram(~Thumb, data = Fingers) %>%
+                gf_facet_grid(Sex ~ .) %>%
+                gf_vline(xintercept = ~mean, color = "blue", data = Thumb.stats)
+
+            # modify this code to add lines to represent the mean Sex.resid of each Sex group
+            Sex.resid.stats <- favstats(Sex.resid ~ Sex, data = Fingers)
+            gf_dhistogram(~Sex.resid, data = Fingers, fill = "skyblue") %>%
+                gf_facet_grid(Sex ~ . )
+        </code>
+        <code data-type="solution">
+            Thumb.stats <- favstats(Thumb ~ Sex, data = Fingers)
+                gf_dhistogram( ~ Thumb, data = Fingers) %>%
+                 gf_facet_grid(Sex ~ .) %>%
+                 gf_vline(xintercept = ~mean, color = "blue", data = Thumb.stats)
+
+            Sex.resid.stats <- favstats(Sex.resid ~ Sex, data = Fingers)
+            gf_dhistogram( ~ Sex.resid, data = Fingers, fill = "skyblue") %>%
+                gf_facet_grid(Sex ~ . ) %>%
+                gf_vline(xintercept = ~mean, color = "blue", data = Sex.resid.stats)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_vline", index = 1)
+                check_function(., "gf_vline", index = 2)
+                check_function(., "gf_facet_grid", index = 1)
+                check_function(., "gf_facet_grid", index = 2)
+                check_function(., "gf_dhistogram", index = 1)
+                check_function(., "gf_dhistogram", index = 2) %>%
+                    check_arg("data") %>% check_equal()
+            }
+        </code>
+        <div data-type="hint"></div>
+    </div>
+</body>
+</html>

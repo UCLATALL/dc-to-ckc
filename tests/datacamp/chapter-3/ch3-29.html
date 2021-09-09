@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 29</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # write code to create a frequency table of Thumb
+        </code>
+        <code data-type="solution">
+            tally(~Thumb, data = Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("tally") %>% {
+                check_arg(., "x") %>% check_equal()
+                check_arg(., "data") %>% check_equal()
+                check_result(.) %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Use the same code as you used above, just tally the variable Thumb</div>
+    </div>
+</body>
+</html>

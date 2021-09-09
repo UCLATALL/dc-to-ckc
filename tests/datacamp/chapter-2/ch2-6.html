@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 6</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            MindsetMatters <- Lock5Data::MindsetMatters %>%
+                mutate(Condition = factor(Cond, levels = c(1, 0), labels = c("Informed", "Uninformed")))
+        </code>
+        <code data-type="sample-code">
+            # Use tally() with the MindsetMatters data frame to create a frequency table of housekeepers by Condition
+        </code>
+        <code data-type="solution">
+            tally(~Condition, data=MindsetMatters)
+
+            # Another solution
+            # tally(MindsetMatters$Condition)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("tally") %>% check_result() %>% check_equal()
+        </code>
+        <div data-type="hint">Use tally(), ~Condition, and data = MindsetMatters</div>
+    </div>
+</body>
+</html>

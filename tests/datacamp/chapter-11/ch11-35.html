@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 35</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+
+        </code>
+        <code data-type="sample-code">
+            # this code fits the teacher model and saves it as teacher_model
+			teacher_model <- lm(outcome ~ teacher, data = class_data)
+
+			# print the ANOVA table that compares teacher_model to the empty model
+
+        </code>
+        <code data-type="solution">
+            # this code fits the teacher model and saves it as teacher_model
+			teacher_model <- lm(outcome ~ teacher, data = class_data)
+
+			# print the ANOVA table that compares teacher_model to the empty model          
+            supernova(teacher_model)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("supernova") %>% check_result() %>% check_equal()
+        </code>
+    </div>
+</body>
+</html>

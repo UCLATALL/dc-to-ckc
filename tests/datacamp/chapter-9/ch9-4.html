@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 4</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+            RBackend::custom_seed(12)
+        </code>
+        <code data-type="sample-code">
+            # Write code to simulate another random sample of 24 dice rolls
+            sample2 <-
+
+            # This will return the mean of those numbers
+            mean(sample2)
+        </code>
+        <code data-type="solution">
+            # Write code to simulate another random sample of 24 dice rolls
+            sample2 <- resample(1:6, 24)
+
+            # This will retrn the mean of those numbers
+            mean(sample2)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "resample") %>% check_arg("...") %>% check_equal()
+                check_function(., "mean") %>% check_result() %>% check_equal()
+            }
+        </code>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 3</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # This sets up our tiny data frame with our outcome variable
+            outcome <- c(1, 2, 3, 4, 5)
+            tinydata <- data.frame(outcome)
+
+            # Write code to create a histogram of outcome
+        </code>
+        <code data-type="solution">
+            outcome <- c(1, 2, 3, 4, 5)
+            tinydata <- data.frame(outcome)
+            gf_histogram(~outcome, data = tinydata, fill = "aquamarine", color = "gray")
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "outcome", undefined_msg = "Make sure to not remove `outcome`") %>% check_equal()
+                check_object(., "tinydata") %>% check_column("outcome") %>% check_equal(incorrect_msg = "Make sure to not alter `tinydata`")
+                check_function(., "gf_histogram") %>% {
+                    check_arg(., "fill", arg_not_specified_msg = "Remember to use `fill =` with your own choice of color")
+                    check_arg(., "color", arg_not_specified_msg = "Remember to use `color =` with your own choice of color")
+                }
+
+                check_or(.,
+                    check_function(., "gf_histogram") %>% {
+                        check_arg(., "object") %>% check_equal(eval = FALSE, incorrect_msg = "Make sure you specify `~outcome` as the first argument.")
+                        check_arg(., "data") %>% check_equal(incorrect_msg = "Did you set `data = tinydata`?")
+                    },
+                    override_solution_code(., '{
+                        outcome <- c(1, 2, 3, 4, 5)
+                        tinydata <- data.frame(outcome)
+                        gf_histogram(~tinydata, fill = "aquamarine", color = "gray")
+                    }') %>% 
+                        check_function("gf_histogram") %>%
+                            check_arg("object") %>% 
+                            check_equal(eval = FALSE)
+                )
+
+            }
+        </code>
+        <div data-type="hint"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 2</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            TinyFingers <- data.frame(
+                Sex = as.factor(rep(c("female", "male"), each = 3)),
+                Thumb = c(56, 60, 61, 63, 64, 68),
+                Height = c(62, 66, 67, 63, 68, 71)
+            )  %>% mutate(
+                Height2Group = recode(ntile(Height, 2), '1' = "1-Short", '2' = "2-Tall"),
+                Height3Group = recode(ntile(Height, 2), '1' = "1-Short", '2' = "2-Medium", '3' = "3-Tall"),
+                GroupNum = ntile(Height, 2)
+            )
+        </code>
+        <code data-type="sample-code">
+            # fit a model of Thumb length based on Height2Group
+            Height2Group.model <- lm()
+
+            # fit a model of Thumb length based on GroupNum
+            GroupNum.model <- lm()
+
+            # this prints the parameter estimates from the two models
+            Height2Group.model
+            GroupNum.model
+        </code>
+        <code data-type="solution">
+            Height2Group.model <- lm(Thumb ~ Height2Group, data = TinyFingers)
+            GroupNum.model <- lm(Thumb ~ GroupNum, data = TinyFingers)
+            Height2Group.model
+            GroupNum.model
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Height2Group.model") %>% check_equal()
+                check_object(., "GroupNum.model") %>% check_equal()
+                check_output_expr(., "Height2Group.model\nGroupNum.model")
+            }
+        </code>
+
+    </div>
+</body>
+</html>

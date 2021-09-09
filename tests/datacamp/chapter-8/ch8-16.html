@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 16</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- Fingers %>%
+                filter(Thumb >= 33 & Thumb <= 100) %>%
+                mutate(
+                    zThumb = zscore(Thumb),
+                    zHeight = zscore(Height)
+                )
+        </code>
+        <code data-type="sample-code">
+            # square this
+            cor(Thumb ~ Height, data = Fingers)
+        </code>
+        <code data-type="solution">
+            # square this
+            cor(Thumb ~ Height, data = Fingers) ^ 2
+        </code>
+        <code data-type="sct">
+           ex() %>% check_output_expr("cor(Thumb ~ Height, data = Fingers) ^ 2")
+        </code>
+        <div data-type="hint">Use the <code>^</code> to raise a value to a power</div>
+    </div>
+</body>
+</html>

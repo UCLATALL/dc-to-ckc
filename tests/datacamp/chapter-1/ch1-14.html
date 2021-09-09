@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 14</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            my.vector <- c(1,2,3,4,5)
+        </code>
+        <code data-type="sample-code">
+        # This creates `my.vector` and stores 1, 2, 3, 4, 5 in it
+        my.vector <- c(1,2,3,4,5)
+
+        # Now write code to save `my.vector * 100` back into `my.vector`
+        my.vector <-
+
+        </code>
+        <code data-type="solution">
+        my.vector <- c(1,2,3,4,5)
+        my.vector <- my.vector * 100
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_operator(., "*") %>% check_result() %>% check_equal()
+                check_object(., "my.vector") %>% check_equal()
+            }
+        </code>
+        <div data-type="hint"></div>
+    </div>
+</body>
+</html>

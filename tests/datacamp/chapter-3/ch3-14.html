@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 14</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+            custom_seed(7)
+        </code>
+        <code data-type="sample-code">
+            model.pop <- 1:6
+
+            # create a sample with 1000 rolls of a die
+            largesample <-
+
+            # add largesample to the dicerolls data frame
+            dicerolls <-
+
+            # this will create a density histogram of your largesample
+            gf_dhistogram(~largesample, data = dicerolls, color="darkgray", fill="springgreen", bins=6)
+        </code>
+        <code data-type="solution">
+            model.pop <- 1:6
+            largesample <- resample(model.pop, 1000)
+            dicerolls <- data.frame(largesample)
+            gf_dhistogram(~ largesample, data = dicerolls, color="darkgray", fill="springgreen", bins=6)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "largesample") %>% check_equal()
+                check_object(., "dicerolls") %>% check_equal()
+                check_or(., 
+                    check_function(., "gf_dhistogram") %>% {
+                        check_arg(., "object") %>% check_equal(eval = FALSE)
+                        check_arg(., "data") %>% check_equal()
+                    },
+                    override_solution_code(., "{
+                        model.pop <- 1:6
+                        largesample <- resample(model.pop, 1000)
+                        dicerolls <- data.frame(largesample)
+                        gf_dhistogram(~dicerolls, color='darkgray', fill='springgreen', bins=6)
+                    }") %>%
+                        check_function("gf_dhistogram") %>%
+                            check_arg("object") %>%
+                            check_equal(eval = FALSE)
+                )
+            }
+        </code>
+        <div data-type="hint"></div>
+    </div>
+</body>
+</html>

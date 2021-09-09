@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 9</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+
+            RBackend::custom_seed(211)
+        </code>
+        <code data-type="sample-code">
+            # This creates samplePRE and SDoPRE
+            samplePRE <- PRE(Tip ~ Condition, data = TipExperiment)
+            SDoPRE <- do(1000) * PRE(Tip ~ shuffle(Condition), data = TipExperiment)
+
+            # modify this to fill the PREs greater than the samplePRE in a different  color
+            gf_histogram(~ PRE, data = SDoPRE)
+
+            # what is the proportion of randomized PREs that are greater than .0729?
+        </code>
+        <code data-type="solution">
+            samplePRE <- PRE(Tip ~ Condition, data = TipExperiment)
+            SDoPRE <- do(1000) * PRE(Tip ~ shuffle(Condition), data = TipExperiment)
+
+            # NOTE: PRE(Tip ~ Condition, data = TipExperiment) equals samplePRE
+            # It is written out in full here to allow us to score your responses.
+            # Your response did not need to have it written out in full
+
+            gf_histogram(~PRE, data = SDoPRE, fill = ~PRE > PRE(Tip ~ Condition, data = TipExperiment))
+            tally(~PRE > PRE(Tip ~ Condition, data = TipExperiment), data = SDoPRE, format = "proportion")
+        </code>
+        <code data-type="sct">
+            eq_fun <- function(x, y) {
+                (formula(x) == ~PRE > PRE(Tip ~ Condition, data = TipExperiment))
+            }
+
+            ex() %>% check_or(
+            check_function(., "gf_histogram") %>% {
+                check_arg(., "fill") %>% check_equal(eval = FALSE, eq_fun = eq_fun)
+                check_arg(., "data") %>% check_equal()
+            },
+            override_solution(., "gf_histogram(~PRE, data = SDoPRE, fill = ~PRE > samplePRE)") %>%
+            check_function("gf_histogram") %>% 
+            check_arg("fill") %>% check_equal(eval = FALSE, eq_fun = function(x,y) (formula(x) == ~PRE > samplePRE))
+            )
+            
+             ex() %>% check_or(
+                check_function(., "tally") %>% {
+                    check_arg(., "x") %>% check_equal(eval = FALSE, eq_fun = eq_fun)
+                    check_arg(., "format") %>% check_equal()
+                },
+            override_solution(., 'tally(~PRE > samplePRE, data = SDoPRE, format = "proportion")') %>%
+            check_function("tally") %>% 
+            check_arg("x") %>% check_equal(eval = FALSE, eq_fun = function(x,y) (formula(x) == ~PRE > samplePRE)) 
+            )
+            
+            
+            
+        </code>
+    </div>
+</body>
+</html>

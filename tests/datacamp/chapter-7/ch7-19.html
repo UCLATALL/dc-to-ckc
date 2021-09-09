@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 19</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(lsr)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- Fingers %>% mutate(
+                Height2Group = factor(ntile(Height, 2), 1:2, c("short", "tall"))
+            )
+            Height2Group.model <- lm(Thumb ~ Height2Group, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # modify these two lines of code to create 3 Height groups with the labels "short", "medium", and "tall"
+            # make sure you save to a new variable in Fingers called Height3Group
+            Fingers$Height2Group <- ntile(Fingers$Height, 2)
+            Fingers$Height2Group <- factor(Fingers$Height2Group, levels = c(1,2), labels = c("short", "tall"))
+
+            # this prints out 10 rows of Fingers for selected columns
+            head(select(Fingers, Thumb, Height, Height3Group), 10)
+        </code>
+        <code data-type="solution">
+            Fingers$Height3Group <- ntile(Fingers$Height, 3)
+            Fingers$Height3Group <- factor(Fingers$Height3Group, levels = c(1,2,3), labels = c("short", "medium", "tall"))
+
+            head(select(Fingers, Thumb, Height, Height3Group), 10)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "Fingers") %>% check_column("Height3Group") %>% check_equal()
+                check_output_expr(., "head(select(Fingers, Thumb, Height, Height3Group),10)")
+            }
+        </code>
+        <div data-type="hint">Don't forget to change the column name from <code>Height2Group</code> to <code>Height3Group</code></div>
+    </div>
+</body>
+</html>

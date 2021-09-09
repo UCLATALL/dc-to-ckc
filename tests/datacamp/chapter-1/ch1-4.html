@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 4</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code"></code>
+        <code data-type="sample-code">
+            # Use the sum() function to add the numbers 5, 10, 15
+
+            # Use the print() function to print the word "hello"
+
+        </code>
+        <code data-type="solution">
+            # Use the sum() function to add the numbers 5, 10, 15
+            sum(5, 10, 15)
+
+            # Use the print() function to print the word "hello"
+            print("hello")
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., 'sum') %>% {
+                    check_arg(., "...") %>% check_equal()
+                    check_result(.) %>% check_equal()
+                }
+                check_function(., 'print') %>% check_result() %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">When using the sum() function: don't forget to separate the numbers with a comma. Remember to put quotations around the word hello. </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 20</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Create a faceted histogram for Tip in both conditions of TipExperiment
+        </code>
+        <code data-type="solution">
+            gf_dhistogram(~ Tip, data = TipExperiment) %>%
+                gf_facet_grid(Condition ~ .)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_dhistogram")
+                check_function(., "gf_facet_grid")
+            }
+        </code>
+        <div data-type="hint"></div>
+    </div>
+</body>
+</html>

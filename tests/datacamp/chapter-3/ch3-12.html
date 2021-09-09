@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 Exercise 12</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-height=350 data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+            custom_seed(5)
+        </code>
+        <code data-type="sample-code">
+            model.pop <- 1:6
+
+            # Modify this code from 12 dice rolls to 24 dice rolls
+            sample2 <- resample(model.pop, 12)
+            dicerolls <- data.frame(sample2)
+
+            # This will create a density histogram
+            gf_dhistogram(~sample2, data = dicerolls, color = "darkgray", fill = "springgreen", bins = 6)
+        </code>
+        <code data-type="solution">
+            model.pop <- 1:6
+            sample2 <- resample(model.pop, 24)
+            dicerolls <- data.frame(sample2)
+            gf_dhistogram(~sample2, data=dicerolls, color="darkgray", fill="springgreen", bins=6)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_object("sample2") %>% check_equal()
+        </code>
+        <div data-type="hint">Just adjust the number of dice rolls. Keep everything else the same</div>
+    </div>
+</body>
+</html>

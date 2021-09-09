@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 18</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers
+        </code>
+        <code data-type="sample-code">
+            # Arrange SSLast in descending order
+            Fingers <-
+
+            # Print out just the variable SSLast from the Fingers data frame
+        </code>
+        <code data-type="solution">
+            Fingers <- arrange(Fingers, desc(SSLast))
+            Fingers$SSLast
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(.,"arrange")
+                check_function(., "desc")
+                check_object(., "Fingers") %>% check_equal()
+                check_output_expr(., "Fingers$SSLast")
+            }
+        </code>
+        <div data-type="hint">Did you use arrange() with the desc() function to order SSLast in descending order? Remember to print SSLast by typing Fingers$SSLast</div>
+    </div>
+</body>
+</html>

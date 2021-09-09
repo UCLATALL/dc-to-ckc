@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 23</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+
+            Fingers$Height3Group <- factor(
+                ntile(Fingers$Height, 3),
+                levels = 1:3,
+                labels = c("short", "medium", "tall")
+            )
+
+            RBackend::custom_seed(51)
+        </code>
+        <code data-type="sample-code">
+            # SDoF and sampleF has been created for you
+            SDoF <- do(1000) * fVal(Thumb ~ shuffle(Height), data = Fingers)
+            sampleF <- fVal(Thumb ~ Height, data = Fingers)
+
+            # how many of the randomized F values are greater than our sampleF?
+        </code>
+        <code data-type="solution">
+            # SDoF has been created for you
+            SDoF <- do(1000) * fVal(Thumb ~ shuffle(Height), data = Fingers)
+            sampleF <- fVal(Thumb ~ Height, data = Fingers)
+
+            # how many of the randomized F values are greater than our sampleF?
+            tally(~ fVal > sampleF, data = SDoF)
+        </code>
+        <code data-type="sct">
+            ex() %>%
+                check_function("tally") %>%
+                check_result() %>%
+                check_equal()
+        </code>
+    </div>
+</body>
+</html>

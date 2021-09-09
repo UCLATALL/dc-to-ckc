@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 19</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers %>%
+                arrange(desc(SSLast))
+        </code>
+        <code data-type="sample-code">
+            # Filter out the students who have missing data for SSLast
+            Fingers.subset <-
+
+            # Print out the variable SSLast from Fingers.subset
+        </code>
+        <code data-type="solution">
+            Fingers.subset <- filter(Fingers, SSLast != "NA")
+            Fingers.subset$SSLast
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "filter") %>% {
+                    check_arg(., ".data") %>% check_equal()
+                    check_arg(., "...") %>% check_equal()
+                }
+                check_object(., "Fingers.subset") %>% check_equal()
+                check_output_expr(., "Fingers.subset$SSLast", missing_msg = "Make sure to print out SSLast from the Fingers.subset data frame.")
+            }
+        </code>
+        <div data-type="hint">Make sure to filter IN: we want the SSLast data that is NOT NA, i.e. != NA.</div>
+    </div>
+</body>
+</html>

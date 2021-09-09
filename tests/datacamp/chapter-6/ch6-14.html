@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6 Exercise 14</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            set.seed(2)
+            somedata <- 1:10 %>%
+                purrr::set_names(paste0("var", 1:10)) %>%
+                purrr::map_df(~resample(-3:3, 1000))
+        </code>
+        <code data-type="sample-code">
+            # write code to print out a few lines of somedata
+
+            # write code to create individual histograms
+            # the first one (var1) has been written for you
+            gf_histogram(~ var1, fill = "red", data = somedata)
+        </code>
+        <code data-type="solution">
+            head(somedata)
+            gf_histogram(~var1, fill = "red", data = somedata)
+
+            # colors, if any, do not affect scoring
+            gf_histogram(~var2, data = somedata)
+            gf_histogram(~var3, data = somedata)
+            gf_histogram(~var4, data = somedata)
+            gf_histogram(~var5, data = somedata)
+            gf_histogram(~var6, data = somedata)
+            gf_histogram(~var7, data = somedata)
+            gf_histogram(~var8, data = somedata)
+            gf_histogram(~var9, data = somedata)
+            gf_histogram(~var10, data = somedata)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "head") %>% check_arg("x") %>% check_equal()
+                check_function(., "gf_histogram", index = 1) %>% check_arg("object") %>% check_equal()
+                check_function(., "gf_histogram", index = 2) %>% check_arg("object") %>% check_equal()
+                check_function(., "gf_histogram", index = 3) %>% check_arg("object") %>% check_equal()
+                check_function(., "gf_histogram", index = 4) %>% check_arg("object") %>% check_equal()
+                check_function(., "gf_histogram", index = 5) %>% check_arg("object") %>% check_equal()
+                check_function(., "gf_histogram", index = 6) %>% check_arg("object") %>% check_equal()
+                check_function(., "gf_histogram", index = 7) %>% check_arg("object") %>% check_equal()
+                check_function(., "gf_histogram", index = 8) %>% check_arg("object") %>% check_equal()
+                check_function(., "gf_histogram", index = 9) %>% check_arg("object") %>% check_equal()
+                check_function(., "gf_histogram", index = 10) %>% check_arg("object") %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Use the <code>gf_histogram()</code> function</div>
+    </div>
+</body>
+</html>

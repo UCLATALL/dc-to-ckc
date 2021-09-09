@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6 Exercise 6</title>
+<script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+            Empty.model <- lm(Thumb ~ NULL, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # calculate the standard deviation of Thumb from Fingers with sd()
+
+            # calculate the standard deviation with sqrt() and var()
+
+            # calculate the standard deviation with favstats()
+        </code>
+        <code data-type="solution">
+            sd(Fingers$Thumb)
+            sqrt(var(Fingers$Thumb))
+            favstats(~Thumb, data = Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "sd") %>% check_result() %>% check_equal()
+                check_function(., "sqrt") %>% check_result() %>% check_equal()
+                check_function(., "favstats") %>% check_result() %>% check_equal()
+            }
+        </code>
+        <div data-type="hint">Make sure to calculate SD all three separate ways, and Run before Submitting to make sure you are getting the correct values</div>
+    </div>
+</body>
+</html>

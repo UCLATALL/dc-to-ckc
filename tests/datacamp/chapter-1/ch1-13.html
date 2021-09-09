@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 1 Exercise 13</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code"></code>
+        <code data-type="sample-code">
+            # Run the code below to see what happens
+            my.vector <- c(1,2,3,4,5)
+            my.vector * 100
+
+            # This will print out my.vector
+            my.vector
+        </code>
+        <code data-type="solution">
+            my.vector <- c(1,2,3,4,5)
+            my.vector * 100
+            my.vector
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_object(., "my.vector") %>% check_equal(incorrect_msg = "Make sure not to change the contents of my.vector")
+                check_operator(., "*") %>% check_result() %>% check_equal(incorrect_msg = "Make sure to keep the line my.vector * 100")
+                check_output_expr(., "my.vector", missing_msg = "Did you print my.vector?")
+            }
+        </code>
+        <div data-type="hint">Simply click the Run button and observe the output</div>
+    </div>
+</body>
+</html>

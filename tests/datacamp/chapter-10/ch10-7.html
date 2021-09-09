@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 10 Exercise 7</title>
+    <!--Script to run DataCamp Light-->
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula", "okcupiddata")
+      lapply(packages, library, character.only = T)
+      custom_seed(31)
+      Thumb.stats <- favstats(~ Thumb, data = Fingers)
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      # This generates and plots a sampling distribution of 1000 bootstrapped means.
+      bootSDoM <- do(1000) * mean(resample(Fingers$Thumb, 157))
+      gf_histogram(~ mean, data = bootSDoM, fill = "darkblue") %>%
+        gf_labs(title = "Bootstrapped Sampling Distribution of Means (n = 157)")
+
+      # Modify this code to generate and plot a sampling distribution of 1000 simulated means.
+      simSDoM <-
+      gf_histogram(~ mean, data = simSDoM, fill = "blue") %>%
+        gf_labs(title = "Simulated Sampling Distribution of Means (n = 157)")
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      # This generates and plots a sampling distribution of 1000 bootstrapped means.
+      bootSDoM <- do(1000) * mean(resample(Fingers$Thumb, 157))
+      gf_histogram(~ mean, data = bootSDoM, fill = "darkblue") %>%
+        gf_labs(title = "Bootstrapped Sampling Distribution of Means (n = 157)")
+
+      # Modify this code to generate and plot a sampling distribution of 1000 simulated means.
+      simSDoM <- do(1000) * mean(rnorm(157, mean = Thumb.stats$mean, sd = Thumb.stats$sd))
+      gf_histogram(~ mean, data = simSDoM, fill = "blue") %>%
+        gf_labs(title = "Simulated Sampling Distribution of Means (n = 157)")
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% {
+        check_function(., "rnorm") %>% {
+          check_arg(., "n") %>% check_equal()
+          check_arg(., "mean") %>% check_equal()
+          check_arg(., "sd") %>% check_equal()
+        }
+        check_code(., "do\\(1000\\) ?\\* ?mean\\(rnorm")
+      }
+
+      <!--Allow multiple solutions for gf_histogram-->
+      ex() %>% check_or(
+        check_function(., "gf_histogram", index = 2) %>% {
+          check_arg(., "object") %>% check_equal()
+          check_arg(., "data") %>% check_equal()
+        },
+        override_solution(., "gf_histogram(1:3); gf_histogram(simSDoM, ~mean)") %>%
+          check_function(., "gf_histogram", index = 2) %>% {
+            check_arg(., "object") %>% check_equal()
+            check_arg(., "gformula") %>% check_equal()
+          },
+        override_solution(., "gf_histogram(1:3); gf_histogram(~simSDoM$mean)") %>%
+          check_function("gf_histogram", index = 2) %>%
+          check_arg("object") %>%
+          check_equal()
+      )
+      success_msg("Great thinking!")
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">
+      Think about the difference between a sampling difference of bootstrapped means and a
+      sampling distribution of simulated means.What function could you use to simulate a distribution?
+    </div>
+  </div>
+</body>
+</html>

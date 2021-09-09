@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 11</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- Fingers %>%
+                filter(Thumb >= 33 & Thumb <= 100) %>%
+                mutate(
+                    zThumb = zscore(Thumb),
+                    zHeight = zscore(Height)
+                )
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # this overlays the best-fitting regression model on this scatter plot
+            gf_point(Thumb ~ Height, data = Fingers, size = 4, color = "black") %>%
+                gf_lm()
+
+            # modify this to overlay the best-fitting regression model on this scatter plot
+            gf_point(zThumb ~ zHeight, data = Fingers, size = 4, color = "firebrick")
+        </code>
+        <code data-type="solution">
+            # this overlays the best-fitting regression model on this scatter plot
+            gf_point(Thumb ~ Height, data = Fingers, size = 4, color = "black") %>%
+                gf_lm()
+
+            # modify this to overlay the best-fitting regression model on this scatter plot
+            gf_point(zThumb ~ zHeight, data = Fingers, size = 4, color = "firebrick") %>%
+                gf_lm()
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("gf_lm", index = 2)
+        </code>
+        <div data-type="hint">Note the use of <code>gf_lm</code></div>
+    </div>
+</body>
+</html>

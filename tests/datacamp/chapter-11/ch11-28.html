@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 28</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+            require(MindsetMatters)
+            require(HappyPlanetIndex)
+            require(fivethirtyeight)
+        </code>
+        <code data-type="sample-code">
+            # Can you arrange the data frame to show you the places with the highest hate crime rates? Can you just print the 6 states with the highest crime rates?
+        </code>
+        <code data-type="solution">
+            # Can you arrange the data frame to show you the places with the highest hate crime rates? Can you just print the 6 states with the highest crime rates?
+            # there are multiple ways to approach this task. Here are a few possible solutions:
+
+            head(arrange(hate_crimes, desc(avg_hatecrimes_per_100k_fbi)))
+
+            hate_crimes <- arrange(hate_crimes, desc(avg_hatecrimes_per_100k_fbi))
+            head(select(hate_crimes, state, avg_hatecrimes_per_100k_fbi))
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "desc", not_called_msg = "Did you use the desc() function to arrange avg_hatecrimes_per_100k_fbi in descending order?")
+                check_function(., "arrange", not_called_msg = "Did you use the arrange() function to arrange avg_hatecrimes_per_100k_fbi in descending order?") %>% check_result() %>% check_equal()
+                check_function(., "head", not_called_msg = "Did you remember to print the first 6 rows of the data frame?")
+                }
+        </code>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 8</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-height=500
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # Modify this boxplot to look at Thumb length by Job
+            gf_boxplot(Thumb ~ Sex, data = Fingers, color = ~Sex) %>%
+                gf_jitter(height = 0, color = "gray", alpha = .5, size = 3)
+        </code>
+        <code data-type="solution">
+            gf_boxplot(Thumb ~ Job, data = Fingers) %>%
+                gf_jitter(height = 0, color = "gray", alpha = .5, size = 3)
+        </code>
+        <code data-type="sct">
+  
+            ex() %>% check_function(., "gf_boxplot") %>% {
+                    check_arg(., "data") %>% check_equal()
+                    check_arg(., "object") %>% check_equal()
+                }
+
+        </code>
+        <div data-type="hint"><code>Job</code> is the explanatory variable in this example.</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 6</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Fingers <- filter(Fingers, Thumb >= 33 & Thumb <= 100)
+            Height.model <- lm(Thumb ~ Height, data = Fingers)
+        </code>
+        <code data-type="sample-code">
+            # modify to save the residuals from Height.model
+            Fingers$Height.resid <- resid()
+        </code>
+        <code data-type="solution">
+            # modify to save the residuals from Height.model
+            Fingers$Height.resid <- resid(Height.model)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_object("Fingers") %>% check_column("Height.resid") %>% check_equal()
+        </code>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 22</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            set.seed(2)
+            Thumb.stats <- favstats(~Thumb, data = Fingers)
+            SDoM <- do(1000) * mean(rnorm(157, Thumb.stats$mean, Thumb.stats$sd))
+        </code>
+        <code data-type="sample-code">
+            # write code to tally how many simulated means are >= 65
+        </code>
+        <code data-type="solution">
+            tally(~mean >= 65, data = SDoM, format = "proportion")
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("tally") %>% {
+                check_arg(., "x") %>% check_equal()
+                check_arg(., "data") %>% check_equal()
+                check_arg(., "format") %>% check_equal()
+            }
+        </code>
+    </div>
+</body>
+</html>

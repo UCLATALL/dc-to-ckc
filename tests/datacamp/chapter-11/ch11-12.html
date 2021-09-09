@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 11 Exercise 12</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(okcupiddata)
+            require(supernova)
+
+            RBackend::custom_seed(241)
+            sampleF <- fVal(Tip ~ Condition, data = TipExperiment)
+        </code>
+        <code data-type="sample-code">
+            # edit this to explore the F distribution with df model = 6
+            xpf(sampleF, df1 = 1, df2 = 42)
+        </code>
+        <code data-type="solution">
+            # edit this to explore the F distribution with df model = 6
+            xpf(sampleF, df1 = 6, df2 = 42)
+        </code>
+        <code data-type="sct">
+            ex() %>%
+                check_function("xpf") %>% {
+                    check_arg(., "df1")
+                    check_arg(., "df2")
+                }
+        </code>
+    </div>
+</body>
+</html>

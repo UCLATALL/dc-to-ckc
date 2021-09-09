@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 7 Exercise 11</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            TinyFingers <- data.frame(
+                Sex = as.factor(rep(c("female", "male"), each = 3)),
+                Thumb = c(56, 60, 61, 63, 64, 68)
+            )
+            TinyEmpty.model <- lm(Thumb ~ NULL, data = TinyFingers)
+            TinySex.model <- lm(Thumb ~ Sex, data = TinyFingers)
+
+            TinyFingers <- TinyFingers %>% mutate(
+                Sex.predicted = predict(TinySex.model),
+                Sex.resid = Thumb - Sex.predicted,
+                Sex.resid2 = resid(TinySex.model),
+                Empty.pred = predict(TinyEmpty.model)
+            )
+        </code>
+        <code data-type="sample-code">
+            # modify this code to find the SS of TinySex.model
+            supernova(Empty.model)
+        </code>
+        <code data-type="solution">
+            supernova(TinySex.model)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_function("supernova") %>% check_result() %>% check_equal(incorrect_msg = "Did you change `Empty.model` to `TinySex.model`?")
+        </code>
+        <div data-type="hint">Make sure to specify the correct model</div>
+    </div>
+</body>
+</html>

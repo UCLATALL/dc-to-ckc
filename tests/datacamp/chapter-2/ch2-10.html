@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 2 Exercise 10</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(supernova)
+            Fingers <- supernova::Fingers %>%
+                mutate_if(is.factor, as.numeric) %>%
+                arrange(desc(Sex)) %>%
+                {.[1, "FamilyMembers"] <- 2; . } %>%
+                {.[1, "Height"] <- 62; . }
+        </code>
+        <code data-type="sample-code">
+            # Remember the head() command?
+            # Use it to look at the first six rows of Fingers
+        </code>
+        <code data-type="solution">
+            head(Fingers)
+        </code>
+        <code data-type="sct">
+            ex() %>% check_output_expr("head(Fingers)", missing_msg = "Did you call `head()` with `Fingers`?")
+        </code>
+        <div data-type="hint">Use the head() function to look at the first few rows of the Fingers data frame</div>
+    </div>
+</body>
+</html>

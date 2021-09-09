@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4 Exercise 10</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise
+         data-lang="r"
+         data-show-run-button=true
+         data-show-solution-before=false
+         data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5withR)
+            require(supernova)
+            custom_seed(13)
+        </code>
+        <code data-type="sample-code">
+            # create a random sample of 211 numbers between 1 and 20
+            Any1_20 <-
+
+            # this puts Any1_20 into a new data frame called Computer
+            Computer <- data.frame(Any1_20)
+
+            # make a histogram of Any1_20 from Computer
+        </code>
+        <code data-type="solution">
+            Any1_20 <- resample(1:20, 211)
+            Computer <- data.frame(Any1_20)
+            gf_histogram(~Any1_20, data = Computer, bins = 20)
+        </code>
+        <code data-type="sct">
+             ex() %>%  {
+                check_object(., "Any1_20") %>% check_equal()
+                check_object(., "Computer") %>% check_equal()
+                check_function(., "gf_histogram") %>%
+                    check_arg("bins") %>% 
+                    check_equal()
+                check_or(.,
+                    check_function(., "gf_histogram") %>% {
+                        check_arg(., "object") %>% check_equal()
+                        check_arg(., "data") %>% check_equal()
+                    },
+                    override_solution_code(., '{
+                        Any1_20 <- resample(1:20, 211)
+                        Computer <- data.frame(Any1_20)
+                        gf_histogram(~Computer, bins = 20)
+                    }') %>%
+                        check_function("gf_histogram") %>%
+                        check_arg("object") %>%
+                        check_equal()
+                )
+            }
+        </code>
+        <div data-type="hint">Don't forget to set the <code>bin</code> size to 20</div>
+    </div>
+</body>
+</html>

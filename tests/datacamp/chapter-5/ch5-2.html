@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 5 Exercise 2</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # modify this code to make a histogram of GradePredict
+            gf_histogram(~ , data = Fingers)
+
+            # save the favstats for GradePredict
+            GradePredict.stats <-
+
+            # this code will print out the favstats
+            GradePredict.stats
+        </code>
+        <code data-type="solution">
+            gf_histogram(~GradePredict, data = Fingers)
+            GradePredict.stats <- favstats(~GradePredict, data = Fingers)
+            GradePredict.stats
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "gf_histogram") %>% check_result() %>% check_equal()
+                check_object(., "GradePredict.stats") %>% check_equal()
+                check_output_expr(., "GradePredict.stats")
+            }
+        </code>
+        <div data-type="hint">Call <code>gf_histogram()</code> on <code>GradePredict</code> in the <code>Fingers</code> data frame</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 18</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+            # this will generate 1000 means and save them in SDoM
+            Thumb.stats <- favstats(~Thumb, data = Fingers)
+            SDoM <- do(1000) * mean(rnorm(157, Thumb.stats$mean, Thumb.stats$sd))
+
+            # make a histogram of the means in SDoM
+
+            # calculate the favstats of SDoM$mean
+        </code>
+        <code data-type="solution">
+            # this will generate 1000 means and save them in SDoM
+            Thumb.stats <- favstats(~Thumb, data = Fingers)
+            SDoM <- do(1000) * mean(rnorm(157, Thumb.stats$mean, Thumb.stats$sd))
+
+            # make a histogram of the means in SDoM
+            gf_histogram(~mean, data = SDoM)
+
+            # calculate the favstats of SDoM$mean
+            favstats(~mean, data = SDoM)
+        </code>
+        <code data-type="sct">
+          ex() %>% {
+            <!-- Allow multiple solutions for gf_histogram -->
+            check_or(.,
+                check_function(., "gf_histogram") %>% {
+                    check_arg(., "object") %>% check_equal()
+                    check_arg(., "data") %>% check_equal()
+                },
+                override_solution(., "gf_histogram(SDoM, ~mean)") %>%
+                    check_function("gf_histogram") %>% {
+                          check_arg(., "object") %>% check_equal()
+                          check_arg(., "gformula") %>% check_equal()
+                    },
+                override_solution(., "gf_histogram(~SDoM$mean)") %>%
+                    check_function("gf_histogram") %>%
+                    check_arg("object") %>% check_equal()
+            )
+
+            <!-- Check favstats (theirs, not what we put in the sample code) -->
+            check_function(., "favstats", 2) %>%
+                check_result() %>% check_equal()
+          }
+        </code>s
+    </div>
+</body>
+</html>

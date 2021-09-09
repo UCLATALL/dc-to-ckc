@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 10 Exercise 24</title>
+  <!--Script to run DataCamp Light-->
+  <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "Lock5withR", "Lock5Data", "supernova", "ggformula", "okcupiddata")
+      lapply(packages, library, character.only = T)
+      custom_seed(100)
+      Fingers$Height2Group <- ntile(Fingers$Height, 2)
+      Fingers$Height2Group <- factor(Fingers$Height2Group, levels = c(1,2), labels = c("short", "tall"))
+      Height2Group.model <- lm(Thumb ~ Height2Group, data = Fingers)
+    </code>
+    <!--Student view-->
+    <code data-type="sample-code">
+      # Create a bootstrapped sampling distribution of b1s
+      bootSDob1 <-
+
+      # Print a few lines of bootSDob1
+    </code>
+    <!--Solution environment-->
+    <code data-type="solution">
+      # Create a bootstrapped sampling distribution of b1s
+      bootSDob1 <- do(1000) * b1(Thumb ~ Height, data = resample(Fingers, 157))
+      
+      # Print a few lines of bootSDob1
+      head(bootSDob1)
+    </code>
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() %>% {
+        check_correct(
+          ., 
+          check_object(., "bootSDob1") %>% check_equal(),
+          { check_error(.) }
+        )
+        check_function(., "head") %>% 
+          check_arg("x") %>% 
+          check_equal()
+      }
+    </code>
+    <!--Hint button and text-->
+    <div data-type="hint">Remember to use the `do()` function and the `b1()` function
+      to create the sampling distribution. You'll also want to use `resample()`.
+    </div>
+  </div>
+</body>
+</html>

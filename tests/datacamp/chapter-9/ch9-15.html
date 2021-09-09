@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 9 Exercise 15</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(tidyverse)
+            require(mosaic)
+            require(Lock5Data)
+            require(supernova)
+
+            Thumb.stats <- favstats(~Thumb, data = Fingers)
+            RBackend::custom_seed(1)
+        </code>
+        <code data-type="sample-code">
+            # modify this code to calculate the mean of 157 thumb lengths from the normal distribution we have been exploring
+            mean(resample(1:6, 24))
+        </code>
+        <code data-type="solution">
+            mean(rnorm(157, Thumb.stats$mean, Thumb.stats$sd))
+        </code>
+        <code data-type="sct">
+            ex() %>% {
+                check_function(., "rnorm") %>% {
+                    check_arg(., "n") %>% check_equal()
+                    check_arg(., "mean") %>% check_equal()
+                    check_arg(., "sd") %>% check_equal()
+                }
+                check_function(., "mean")
+            }
+        </code>
+    </div>
+</body>
+</html>
