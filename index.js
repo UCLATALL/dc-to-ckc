@@ -123,12 +123,21 @@ function dc2md_code_cell(file, id) {
     const [key, value] = entry;
     if (value) {
       md_code_cell += `%%% ${key.toLowerCase()}\n`;
-      md_code_cell += `${dedent(value)}\n\n`;
+      md_code_cell += `${dedent(perform_replacements(value))}\n\n`;
     }
   });
 
   // trim extra new line and close fenced code block
   return md_code_cell.replace(/\n\n$/, "\n```");
+}
+
+/**
+ * Perform any (general) replacements on code blocks.
+ * @param {string} code
+ * @return {string}
+ */
+function perform_replacements(code) {
+  return code.replaceAll(/(?:RBackend::)?custom_seed/g, 'set.seed');
 }
 
 /**
