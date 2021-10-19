@@ -1,6 +1,6 @@
 {
   "name": "dc-to-ckc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convert DataCamp Exercises to CKCode exercises",
   "main": "index.js",
   "scripts": {
