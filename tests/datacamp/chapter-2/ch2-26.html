@@ -11,15 +11,20 @@
             require(tidyverse)
             require(mosaic)
             require(supernova)
+            
+            csvlink <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSb88NlGCW93VSbl4XiPaxf1iDPhbNDgG2FToX3MHxjr0-Bl4eAKQ9HlMoCW_Of0pXqLIfvP8AVb26L/pub?gid=1002384760&single=true&output=csv"
         </code>
         <code data-type="sample-code">
-            # Load the deloache1997 data frame. Save it in an object called deloache1997
+            # This code saves the link to the google sheet into an R object named csvlink
+            csvlink <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSb88NlGCW93VSbl4XiPaxf1iDPhbNDgG2FToX3MHxjr0-Bl4eAKQ9HlMoCW_Of0pXqLIfvP8AVb26L/pub?gid=1002384760&single=true&output=csv"
+            
+            # Save the data into a data frame called deloache1997
             deloache1997 <-
 
             # Run str() on your data frame to see what the data frame contains.
         </code>
         <code data-type="solution">
-            deloache1997 <- read.csv("https://raw.githubusercontent.com/UCLATALL/czi-stats-course-files/master/deLoach-1997-data-sim.csv")
+            deloache1997 <- read.csv(csvlink, header = TRUE)
             str(deloache1997)
         </code>
         <code data-type="sct">

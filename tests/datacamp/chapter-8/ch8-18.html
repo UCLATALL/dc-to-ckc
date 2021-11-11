@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 8 Exercise 18</title>
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+    <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+        <code data-type="pre-exercise-code">
+            require(mosaic)
+            require(supernova)
+        </code>
+        <code data-type="sample-code">
+			Fingers$ShuffHeight <- shuffle(Fingers$Height)
+			gf_point(Thumb ~ ShuffHeight, data = Fingers, color="dodgerblue") %>%
+			   gf_lm(color = "orange") %>%
+			   gf_labs(title = paste("Shuffled Data: b1 = ", round(b1(Thumb ~ ShuffHeight, data=Fingers),digits=2)))
+        </code>
+        <code data-type="sct">
+            ex() %>% check_error()
+        </code>
+    </div>
+</body>
+</html>
