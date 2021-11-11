@@ -1,6 +1,6 @@
 ## First Things First! (Don’t Skip This Page)
 
-Before you start, there are a few things you need to do to get ready for *CourseKata Statistics.* First, make sure you are using the right technology and that it is updated and ready to go. Second, learn how to track your progress and get help. Finally, get some tips about how best to learn from the *CourseKata Statistics* online textbook.
+Before you start, there are a few things you need to do to get ready for *CourseKata Statistics and Data Science.* First, make sure you are using the right technology and that it is updated and ready to go. Second, learn how to track your progress and get help. Finally, get some tips about how best to learn from the *CourseKata Statistics and Data Science* online textbook.
 
 ### Getting Your Technology Ready
 
@@ -30,7 +30,7 @@ You must use **Chrome as your browser** when you’re using the book. If you use
 
 **Allow third-party cookies:**
 
-DataCamp, which we use for the R coding exercises, requires cookies to track your activity. You must **allow third-party cookies** or you will not be able to run the R exercises. To do this:
+The widget we use for the R coding exercises requires cookies in order to work correctly. You must **allow third-party cookies** or you may not be able to run the R exercises. To do this:
 
 1. In Chrome, go to the settings page associated with cookies: **Chrome > Preferences > Privacy and security > Site settings > Cookies and site data**
 2. **Toggle off** the setting “Block third-party cookies” (see picture below).
@@ -49,7 +49,7 @@ If you need technical support you can submit a ticket to CourseKata support. Aft
 
 ### Help Us Improve the Book
 
-You can also create a ticket if you want to report a problem, or make a suggestion, that could help us to improve the quality of *CourseKata Statistics*. We welcome your feedback!
+You can also create a ticket if you want to report a problem, or make a suggestion, that could help us to improve the quality of *CourseKata Statistics and Data Science*. We welcome your feedback!
 
 Please note that tickets are used for reporting technical issues and for offering ideas and suggestions for improving the book. If you have questions about specific statistical concepts, please contact your instructor directly. 
 
@@ -67,7 +67,7 @@ The text and exercises in this online book are designed to help you **think deep
 
 Because the book is designed to be read slowly, try not to put off your reading assignment until the last minute. If you wait until it’s too late, you won’t have time to go through the pages carefully. You will end up skimming, and if you skim, you won’t learn nearly as much. 
 
-Don’t just take our word for it: this is the most common advice our most successful students give to future students of *CourseKata Statistics*.
+Don’t just take our word for it: this is the most common advice our most successful students give to future students of *CourseKata Statistics and Data Science*.
 
 ### Trying Again (and Again)
 
@@ -82,6 +82,7 @@ Your responses to the embedded assessment questions do reappear if you leave a p
 <p align="center" style="text-align: center;"><img src="https://i.postimg.cc/L4LCchrt/kaUkiV3.png" width=100% alt="Image of RConsole explaining Script.R and RConsole windows" /></p>
 
 The best way to review a page is to click the **Try Again** button. You can do this as many times as you wish. You might find this particularly helpful on the review questions at the end of each chapter.
+
 NOTE: Only your initial answers are saved. Using the **Try Again** button won't change the answers your instructor will see from you.
 
 ### End of Page Quiz (Required!)

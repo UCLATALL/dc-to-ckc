@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 7 Exercise 30</title>
+  <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=true data-show-solution-before=false data-no-lazy-load=true>
+    <code data-type="pre-exercise-code">
+      require(mosaic)
+      require(supernova)
+    </code>
+    <code data-type="sample-code">
+      # modify to produce 10 shuffled b1s
+      do( ) * b1(Tip ~ shuffle(Condition), data = TipExperiment)
+    </code>
+    <code data-type="solution">
+      # modify to produce 10 shuffled b1s
+      do(10) * b1(Tip ~ shuffle(Condition), data = TipExperiment)
+    </code>
+    <code data-type="sct">
+      ex() %>%
+        check_function('do') %>%
+        check_arg('object') %>%
+        check_equal()
+    </code>
+  </div>
+</body>
+</html>
