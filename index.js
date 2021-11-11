@@ -10,7 +10,7 @@ require("yargs")
   .scriptName("dc-to-ckc")
   .usage("$0 <cmd> [args]")
   .command(
-    "convert [src] [dc] [dest]",
+    ["convert [src] [dc] [dest]", "$0 [src] [dc] [dest]"],
     "Extract the code modules from the DataCamp HTML files in `datacamp`, convert them " +
       "to CKCode markdown, replace the iframe in the `src` markdown files with the CKCode " +
       "markdown, and output new markdown files to `dest`. The replacements are performed by " +

@@ -13,8 +13,20 @@ npm i -g .
 
 ## Usage
 
+You can get the current version and help documentation just like other CLI tools:
+
 ```bash
 dc-to-ckc --help
 dc-to-ckc --version
-dc-to-ckc convert [book pages dir] [datacamp html dir] [output dir]
 ```
+
+To run the conversion script, use the following code (note that the directories can be specified either relatively or absolutely):
+
+```bash
+dc-to-ckc convert [book pages dir] [datacamp html dir] [output dir]
+
+# convert is the default command, so this is equivalent:
+dc-to-ckc [book pages dir] [datacamp html dir] [output dir]
+```
+
+**Note:** By design, there are no checks on overwriting files. So, if you specify the `book pages dir` the same as the `output dir`, the files will be overwritten. This is useful for converting files in-place.

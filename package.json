@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run dev:clean && node index.js convert tests/pages tests/datacamp tests/converted",
+    "dev:default": "npm run dev:clean && node index.js tests/pages tests/datacamp tests/converted",
     "dev:in-place": "cp -R tests/pages tests/in-place && node index.js convert tests/in-place tests/datacamp tests/in-place",
     "dev:clean": "rimraf tests/converted tests/in-place",
     "test": "echo \"Error: no test specified\" && exit 1"
