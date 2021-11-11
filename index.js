@@ -55,6 +55,13 @@ require("yargs")
  * @param {string} output_dir The directory to output the converted files to.
  */
 function convert(book_dir, datacamp_dir, output_dir) {
+  // path.resolve() will right-most if it is absolute, or join the two if it is relative
+  // (and then stop because caller_dir will be absolute)
+  const caller_dir = process.cwd();
+  book_dir = path.resolve(caller_dir, book_dir);
+  datacamp_dir = path.resolve(caller_dir, datacamp_dir);
+  output_dir = path.resolve(caller_dir, output_dir);
+
   const chapter_dirs = fs
     .readdirSync(book_dir, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
@@ -67,18 +74,18 @@ function convert(book_dir, datacamp_dir, output_dir) {
     ])
   );
 
-  chapter_dirs.forEach((chapter_dir) => {
-    const chapter_output_dir = path.join(output_dir, chapter_dir);
+  chapter_dirs.forEach((chapter_dir_name) => {
+    const chapter_output_dir = path.resolve(output_dir, chapter_dir_name);
     if (!fs.existsSync(chapter_output_dir)) {
       fs.mkdirSync(chapter_output_dir, { recursive: true });
     }
 
     const file_names = fs
-      .readdirSync(path.join(book_dir, chapter_dir))
+      .readdirSync(path.resolve(book_dir, chapter_dir_name))
       .filter((file) => path.extname(file).toLowerCase() === ".md");
 
     file_names.forEach((file_name) => {
-      const file = path.join(book_dir, chapter_dir, file_name);
+      const file = path.resolve(book_dir, chapter_dir_name, file_name);
       const iframe_pattern =
         /(<.*?p.*?>)?<iframe.+?data-type="?datacamp"?.*?>.*?<\/iframe>(<\/p>)?/gi;
       const new_contents = fs
@@ -91,7 +98,7 @@ function convert(book_dir, datacamp_dir, output_dir) {
           return dc2md_code_cell(replacement_file, iframe.id);
         });
 
-      fs.writeFileSync(path.join(chapter_output_dir, file_name), new_contents);
+      fs.writeFileSync(path.resolve(chapter_output_dir, file_name), new_contents);
     });
   });
 }
@@ -149,13 +156,11 @@ function perform_replacements(code) {
 function ls_recursive(dir_path, files_accumulator = []) {
   const files = fs.readdirSync(dir_path);
   files.forEach(function (file) {
-    if (fs.statSync(dir_path + "/" + file).isDirectory()) {
-      files_accumulator = ls_recursive(
-        path.join(dir_path, file),
-        files_accumulator
-      );
+    const resolved_path = path.resolve(dir_path, file);
+    if (fs.statSync(resolved_path).isDirectory()) {
+      files_accumulator = ls_recursive(resolved_path, files_accumulator);
     } else {
-      files_accumulator.push(path.join(__dirname, dir_path, "/", file));
+      files_accumulator.push(resolved_path);
     }
   });
 
